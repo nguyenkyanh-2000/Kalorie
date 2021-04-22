@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.kalorie.ui.adapter.MyFoodRecyclerViewAdapter;
 import com.example.kalorie.R;
-import com.example.kalorie.data.Food;
+import com.example.kalorie.data.FoodList;
 
 /**
  * A fragment representing a list of Items.
@@ -63,7 +63,7 @@ public class FoodFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyFoodRecyclerViewAdapter(Food.ITEMS));
+            recyclerView.setAdapter(new MyFoodRecyclerViewAdapter(FoodList.ITEMS));
         }
         return view;
     }

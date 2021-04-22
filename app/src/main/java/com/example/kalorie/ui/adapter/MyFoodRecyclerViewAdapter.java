@@ -1,25 +1,24 @@
 package com.example.kalorie.ui.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.kalorie.R;
-import com.example.kalorie.data.Food.FoodItem;
+import com.example.kalorie.data.Food;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link FoodItem}.
+ * {@link RecyclerView.Adapter} that can display a {@link Food}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyFoodRecyclerViewAdapter extends RecyclerView.Adapter<MyFoodRecyclerViewAdapter.ViewHolder> {
 
-    private final List<FoodItem> mValues;
+    private final List<Food> mValues;
 
-    public MyFoodRecyclerViewAdapter(List<FoodItem> items) {
+    public MyFoodRecyclerViewAdapter(List<Food> items) {
         mValues = items;
     }
 
@@ -33,8 +32,9 @@ public class MyFoodRecyclerViewAdapter extends RecyclerView.Adapter<MyFoodRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).foodName);
-        holder.mContentView.setText(mValues.get(position).foodCalorie);
+        holder.mIdView.setText(mValues.get(position).getFoodName());
+        holder.mContentView.setText(mValues.get(position).getFoodCalorie());
+
     }
 
     @Override
@@ -46,7 +46,7 @@ public class MyFoodRecyclerViewAdapter extends RecyclerView.Adapter<MyFoodRecycl
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public FoodItem mItem;
+        public Food mItem;
 
         public ViewHolder(View view) {
             super(view);
