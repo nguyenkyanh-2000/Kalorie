@@ -8,12 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.kalorie.ui.viewmodel.CalorieNumberViewModel;
 import com.example.kalorie.R;
 
 public class CalorieNumberFragment extends Fragment {
 
-    private CalorieNumberViewModel mViewModel;
 
     public static CalorieNumberFragment newInstance() {
         return new CalorieNumberFragment();
@@ -28,8 +26,6 @@ public class CalorieNumberFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(CalorieNumberViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }
