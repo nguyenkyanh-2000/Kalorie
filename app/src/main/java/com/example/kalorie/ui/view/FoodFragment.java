@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.kalorie.data.model.Food;
 import com.example.kalorie.ui.adapter.FoodRecyclerViewAdapter;
@@ -45,11 +46,15 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
 
     @Override
     public void onItemClick(int position) {
+        // test toast
+        Toast.makeText(getContext(), "short click", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onLongItemClick(int position) {
-
+        // test toast
+        // long click works
+        Toast.makeText(getContext(), "long click", Toast.LENGTH_LONG).show();
     }
 
     // Demo food generation
