@@ -15,15 +15,15 @@ import android.widget.Button;
 
 import com.example.kalorie.R;
 
-public class FoodInfoFragment extends Fragment {
+public class AddFoodFragment extends Fragment {
 
-
-    public FoodInfoFragment() {
+    public AddFoodFragment() {
         // Required empty public constructor
     }
 
-    public static FoodInfoFragment newInstance() {
-        FoodInfoFragment fragment = new FoodInfoFragment();
+    // TODO: Rename and change types and number of parameters
+    public static AddFoodFragment newInstance(String param1, String param2) {
+        AddFoodFragment fragment = new AddFoodFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -37,7 +37,8 @@ public class FoodInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_food_info, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_add_food, container, false);
     }
 
     @Override
@@ -47,8 +48,10 @@ public class FoodInfoFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        Button btn_add_food_back = view.findViewById(R.id.fragment_food_info_btn_back);
-        btn_add_food_back.setOnClickListener(v -> navController.navigate(R.id.action_foodInfoFragment_to_homeFragment));
+        Button btn_add_food_back = view.findViewById(R.id.fragment_add_food_btn_back);
+        btn_add_food_back.setOnClickListener(v -> navController.navigate(R.id.action_addFoodFragment_to_homeFragment));
 
+        Button btn_add_food_save = view.findViewById(R.id.fragment_add_food_btn_save);
+        btn_add_food_save.setOnClickListener(v -> navController.navigate(R.id.action_addFoodFragment_to_homeFragment));
     }
 }

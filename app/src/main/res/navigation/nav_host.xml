@@ -6,16 +6,32 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.kalorie.HomeFragment"
+        android:name="com.example.kalorie.ui.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_foodInfoFragment2"
-            app:destination="@id/foodInfoFragment2" />
+            android:id="@+id/action_homeFragment_to_addFoodFragment"
+            app:destination="@id/addFoodFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_foodInfoFragment"
+            app:destination="@id/foodInfoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/foodInfoFragment2"
+        android:id="@+id/addFoodFragment"
+        android:name="com.example.kalorie.ui.view.AddFoodFragment"
+        android:label="fragment_add_food"
+        tools:layout="@layout/fragment_add_food" >
+        <action
+            android:id="@+id/action_addFoodFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodInfoFragment"
         android:name="com.example.kalorie.ui.view.FoodInfoFragment"
         android:label="fragment_food_info"
-        tools:layout="@layout/fragment_food_info" />
+        tools:layout="@layout/fragment_food_info" >
+        <action
+            android:id="@+id/action_foodInfoFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
