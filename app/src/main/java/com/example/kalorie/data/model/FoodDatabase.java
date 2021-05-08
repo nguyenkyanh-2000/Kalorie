@@ -9,14 +9,14 @@ import androidx.room.RoomDatabase;
 @Database(entities = {Food.class}, version = 1)
 public abstract class FoodDatabase extends RoomDatabase {
 
-    public abstract FoodDao foodDao();
+    public abstract FoodDatabaseDao foodDao();
 
     private static FoodDatabase INSTANCE;
 
     public static FoodDatabase getInstance(Context context){
 
         if(INSTANCE == null ) {
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FoodDatabase.class, "FoodDB")
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FoodDatabase.class, "food_table")
                     .allowMainThreadQueries()
                     .build();
 

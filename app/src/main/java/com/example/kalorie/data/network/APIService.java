@@ -1,6 +1,6 @@
 package com.example.kalorie.data.network;
 
-import com.example.kalorie.data.model.Post;
+import com.example.kalorie.data.model.Food;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ import retrofit2.http.GET;
 public interface APIService {
 
     @GET("volley_array.json")
-    Call<List<Post>> getPostList();
+    Call<List<Food>> getFoodList();
 }

@@ -1,6 +1,5 @@
 package com.example.kalorie.ui.view;
 
-import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +19,7 @@ public class CalorieNumberFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.calorie_number_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_calorie_number, container, false);
     }
 
     @Override

@@ -3,41 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#453F3F"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:elevation="8dp"
     android:fadingEdge="horizontal|vertical"
     tools:context=".ui.view.MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_calorie_number"
-        android:name="com.example.kalorie.ui.view.CalorieNumberFragment"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="16dp"
-        android:background="#FFFFFF"
-        android:fadingEdge="horizontal|vertical"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_item_list_food"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_item_list_food"
-        android:name="com.example.kalorie.ui.view.FoodFragment"
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="572dp"
-        android:background="#FFFFFF"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143"></androidx.fragment.app.FragmentContainerView>
+        app:navGraph="@navigation/nav_host" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
