@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homeFragment_to_foodInfoFragment"
             app:destination="@id/foodInfoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_diarySettingsFragment"
+            app:destination="@id/diarySettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
@@ -32,6 +35,15 @@
         tools:layout="@layout/fragment_food_info" >
         <action
             android:id="@+id/action_foodInfoFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diarySettingsFragment"
+        android:name="com.example.kalorie.ui.view.DiarySettingsFragment"
+        android:label="fragment_diary_settings"
+        tools:layout="@layout/fragment_diary_settings" >
+        <action
+            android:id="@+id/action_diarySettingsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

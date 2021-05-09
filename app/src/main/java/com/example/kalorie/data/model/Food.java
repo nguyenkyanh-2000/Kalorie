@@ -5,20 +5,14 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "food_table")
 public class Food {
 
-    @PrimaryKey
-    @NonNull
     public String foodId;
 
-    @ColumnInfo
     public String foodName;
 
-    @ColumnInfo
     public String foodCalorie;
 
-    @ColumnInfo
     public String foodDetails;
 
 
