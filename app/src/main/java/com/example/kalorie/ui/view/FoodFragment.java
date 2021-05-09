@@ -59,6 +59,13 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
 
     @Override
     public void onItemClick(int position) {
+        NavController nav = Navigation.findNavController(getView());
+
+        // create bundle
+        Bundle bundle = new Bundle();
+        bundle.putInt("food_id", position);
+        // navigate to food info
+        nav.navigate(R.id.action_homeFragment_to_foodInfoFragment, bundle);
     }
 
 

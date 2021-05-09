@@ -35,7 +35,10 @@
         tools:layout="@layout/fragment_food_info" >
         <action
             android:id="@+id/action_foodInfoFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment">
+        <argument android:name="food_id"
+                app:argType="integer"/>
+        </action>
     </fragment>
     <fragment
         android:id="@+id/diarySettingsFragment"
