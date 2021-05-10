@@ -11,11 +11,16 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.kalorie.R;
 
-public class AddFoodFragment extends Fragment {
+public class
+AddFoodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     public AddFoodFragment() {
         // Required empty public constructor
@@ -53,5 +58,23 @@ public class AddFoodFragment extends Fragment {
 
         Button btn_add_food_save = view.findViewById(R.id.fragment_add_food_btn_save);
         btn_add_food_save.setOnClickListener(v -> navController.navigate(R.id.action_addFoodFragment_to_homeFragment));
+
+        Spinner spinner = view.findViewById(R.id.spinner2);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
+                R.array.units, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

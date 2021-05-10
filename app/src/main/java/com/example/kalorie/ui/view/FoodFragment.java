@@ -69,14 +69,6 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
     }
 
 
-    @Override
-    public void onLongItemClick(int position) {
-        foods.remove(foods.get(position));
-        Toast.makeText(getContext(), "Food removed.", Toast.LENGTH_LONG).show();
-    }
-
-
-
     // Demo food generation
 
     public static List<Food> foods = new ArrayList<Food>();

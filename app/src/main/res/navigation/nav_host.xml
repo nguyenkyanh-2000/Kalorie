@@ -48,5 +48,17 @@
         <action
             android:id="@+id/action_diarySettingsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_diarySettingsFragment_to_changeGoalFragment"
+            app:destination="@id/changeGoalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeGoalFragment"
+        android:name="com.example.kalorie.ui.view.ChangeGoalFragment"
+        android:label="fragment_change_goal"
+        tools:layout="@layout/fragment_change_goal" >
+        <action
+            android:id="@+id/action_changeGoalFragment_to_diarySettingsFragment"
+            app:destination="@id/diarySettingsFragment" />
     </fragment>
 </navigation>
