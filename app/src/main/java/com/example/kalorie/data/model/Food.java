@@ -1,26 +1,21 @@
 package com.example.kalorie.data.model;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import java.util.ArrayList;
 
 public class Food {
 
-    public String foodId;
+    private String foodId;
+    private String foodName;
+    private String foodCalorie;
+    private String foodDescription;
+    private Integer foodAmount;
+    private String[] foodUnits = new String[]{"g","mg","kg"};
 
-    public String foodName;
-
-    public String foodCalorie;
-
-    public String foodDetails;
-
-
-    public Food(String foodId, String foodName, String foodCalorie, String foodDetails) {
+    public Food(String foodId, String foodName, String foodCalorie, String foodDescription) {
         this.foodId = foodId;
         this.foodName = foodName;
         this.foodCalorie = foodCalorie;
-        this.foodDetails = foodDetails;
+        this.foodDescription = foodDescription;
     }
 
     public String getFoodName() {
@@ -31,8 +26,8 @@ public class Food {
         return foodCalorie;
     }
 
-    public String getFoodDetails() {
-        return foodDetails;
+    public String getFoodDescription() {
+        return foodDescription;
     }
 
     public String getFoodId() {

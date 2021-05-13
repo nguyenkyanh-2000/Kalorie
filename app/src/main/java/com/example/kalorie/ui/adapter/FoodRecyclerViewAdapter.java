@@ -33,7 +33,7 @@ public class FoodRecyclerViewAdapter extends RecyclerView.Adapter<FoodRecyclerVi
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mNameView.setText(mValues.get(position).getFoodName());
         holder.mCalorieView.setText(mValues.get(position).getFoodCalorie());
-        holder.mDetailsView.setText(mValues.get(position).getFoodDetails());
+        holder.mDetailsView.setText(mValues.get(position).getFoodDescription());
     }
 
     @Override
@@ -52,7 +52,7 @@ public class FoodRecyclerViewAdapter extends RecyclerView.Adapter<FoodRecyclerVi
             mView = view;
             mNameView = (TextView) view.findViewById(R.id.item_food_name);
             mCalorieView = (TextView) view.findViewById(R.id.item_food_calorie);
-            mDetailsView = (TextView) view.findViewById(R.id.item_food_details);
+            mDetailsView = (TextView) view.findViewById(R.id.item_food_description);
             itemView.setOnClickListener(v -> foodRecyclerViewInterface.onItemClick(getAdapterPosition()));
         }
 
