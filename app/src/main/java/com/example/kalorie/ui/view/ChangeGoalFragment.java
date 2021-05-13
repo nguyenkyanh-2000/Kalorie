@@ -55,7 +55,5 @@ public class ChangeGoalFragment extends Fragment {
 
         Button btn_change_goal_save = view.findViewById(R.id.fragment_change_goal_btn_save);
         btn_change_goal_save.setOnClickListener(v -> navController.navigate(R.id.action_changeGoalFragment_to_diarySettingsFragment));
-
-
     }
 }
