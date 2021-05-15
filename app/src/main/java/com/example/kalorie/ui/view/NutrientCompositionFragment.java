@@ -19,11 +19,8 @@ import com.example.kalorie.R;
 public class NutrientCompositionFragment extends Fragment {
 
     public NutrientCompositionFragment() {
-        // Required empty public constructor
     }
 
-
-    // TODO: Rename and change types and number of parameters
     public static NutrientCompositionFragment newInstance(String param1, String param2) {
         NutrientCompositionFragment fragment = new NutrientCompositionFragment();
         Bundle args = new Bundle();

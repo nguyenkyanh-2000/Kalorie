@@ -39,6 +39,10 @@
         <argument android:name="food_id"
                 app:argType="integer"/>
         </action>
+        <argument
+            android:name="food"
+            app:argType="com.example.kalorie.data.model.Food"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/diarySettingsFragment"

@@ -1,81 +1,35 @@
 package com.example.kalorie.data.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "nutrient")
 public class Nutrient {
 
-    // Required, final attribute.
+    @PrimaryKey
     private int nutrientId;
 
-    // Optional attribute.
-    private float amountCarb;
-    private float amountFat;
-    private float amountProtein;
     private float amountCalorie;
+    private float amountProtein;
+    private float amountFat;
+    private float amountCarb;
 
-    public static class Builder{
+    public Nutrient(){}
 
-        private int nutrientId;
-
-        private float amountCarb;
-        private float amountFat;
-        private float amountProtein;
-        private float amountCalorie;
-
-        public Builder(int nutrientId){
-            this.nutrientId = nutrientId;
-        }
-
-        public Builder withAmountCalorie(float amountCalorie){
-            this.amountCalorie = amountCalorie;
-            return this;
-        }
-
-        public Builder withAmountCarb(float amountCarb){
-            this.amountCarb = amountCarb;
-            return this;
-        }
-
-        public Builder withAmountFat(float amountFat){
-            this.amountFat = amountFat;
-            return this;
-        }
-
-        public Builder withAmountProtein(float amountProtein){
-            this.amountProtein = amountProtein;
-            return this;
-        }
-
-        public Nutrient build(){
-
-            Nutrient nutrient = new Nutrient();
-
-            nutrient.nutrientId = this.nutrientId;
-            nutrient.amountCalorie = this.amountCalorie;
-            nutrient.amountCarb = this.amountCarb;
-            nutrient.amountProtein = this.amountProtein;
-            nutrient.amountFat = this.amountFat;
-
-            return nutrient;
-
-        }
+    public int getNutrientId() {
+        return nutrientId;
     }
 
-    private Nutrient(){
+    public void setNutrientId(int nutrientId) {
+        this.nutrientId = nutrientId;
     }
 
-    public float getAmountCarb() {
-        return amountCarb;
+    public float getAmountCalorie() {
+        return amountCalorie;
     }
 
-    public void setAmountCarb(float amountCarb) {
-        this.amountCarb = amountCarb;
-    }
-
-    public float getAmountFat() {
-        return amountFat;
-    }
-
-    public void setAmountFat(float amountFat) {
-        this.amountFat = amountFat;
+    public void setAmountCalorie(float amountCalorie) {
+        this.amountCalorie = amountCalorie;
     }
 
     public float getAmountProtein() {
@@ -86,11 +40,19 @@ public class Nutrient {
         this.amountProtein = amountProtein;
     }
 
-    public float getAmountCalorie() {
-        return amountCalorie;
+    public float getAmountFat() {
+        return amountFat;
     }
 
-    public void setAmountCalorie(float amountCalorie) {
-        this.amountCalorie = amountCalorie;
+    public void setAmountFat(float amountFat) {
+        this.amountFat = amountFat;
+    }
+
+    public float getAmountCarb() {
+        return amountCarb;
+    }
+
+    public void setAmountCarb(float amountCarb) {
+        this.amountCarb = amountCarb;
     }
 }

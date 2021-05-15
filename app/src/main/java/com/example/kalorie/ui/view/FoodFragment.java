@@ -60,12 +60,9 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
     @Override
     public void onItemClick(int position) {
         NavController nav = Navigation.findNavController(getView());
-
-        // create bundle
-        Bundle bundle = new Bundle();
-        bundle.putInt("food_id", position);
-        // navigate to food info
-        nav.navigate(R.id.action_homeFragment_to_foodInfoFragment, bundle);
+        HomeFragmentDirections.ActionHomeFragmentToFoodInfoFragment action = HomeFragmentDirections
+                .actionHomeFragmentToFoodInfoFragment(foods.get(position));
+        nav.navigate(action);
     }
 
 
@@ -85,16 +82,13 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
         foods.add(item);
     }
 
-    private static Food createDummyItem(int position) {
-        String pos = String.valueOf(position);
-        return new Food(pos, "Food No." + pos
-                ,  String.valueOf(position * 100), makeDetails(position));
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item ").append(position).append(".");
-        return builder.toString();
+    private static Food createDummyItem(int index){
+        Food dummyFood = new Food();
+        dummyFood.setFoodName("Food " + String.valueOf(index));
+        dummyFood.setFoodDescription("Item number " + String.valueOf(index));
+        dummyFood.setFoodCalorie(String.valueOf(index * 100));
+        dummyFood.setFoodAmount(2);
+        return dummyFood;
     }
 
 }

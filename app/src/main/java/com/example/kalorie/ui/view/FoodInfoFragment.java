@@ -4,16 +4,23 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.kalorie.R;
+import com.example.kalorie.data.model.Food;
+import com.example.kalorie.databinding.FragmentFoodInfoBinding;
+
+import static android.content.ContentValues.TAG;
 
 public class FoodInfoFragment extends Fragment {
 
@@ -37,9 +44,18 @@ public class FoodInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // get food id
-        int foodId = getArguments().getInt("food_id");
-        return inflater.inflate(R.layout.fragment_food_info, container, false);
+        FragmentFoodInfoBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_info
+                , container, false);
+        View view = binding.getRoot();
+
+        Food food = null;
+        if (getArguments() != null) {
+            FoodInfoFragmentArgs args = FoodInfoFragmentArgs.fromBundle(getArguments());
+            food = args.getFood();
+        }
+
+        binding.setFood(food);
+        return view;
     }
 
     @Override
