@@ -9,14 +9,25 @@
     tools:context=".ui.view.DiarySettingsFragment">
 
     <Button
+        android:id="@+id/fragment_diary_settings_btn_change_date"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Change Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <Button
         android:id="@+id/fragment_diary_settings_btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="BACK"
-        app:layout_constraintEnd_toStartOf="@+id/fragment_diary_settings_btn_change_goals"
-        app:layout_constraintStart_toEndOf="@+id/fragment_food_info_btn_remove"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/fragment_diary_settings_btn_change_date"
+        app:layout_constraintStart_toEndOf="@+id/fragment_diary_settings_btn_change_goals"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <ProgressBar
         android:id="@+id/progress_bar_calories"
@@ -117,7 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
-        android:text="Date"
+        android:text="Current date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
@@ -147,7 +158,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
-        android:text="Current Carb"
+        android:text="Current Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
@@ -221,17 +232,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider6" />
 
-    <Button
-        android:id="@+id/fragment_food_info_btn_remove"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Change Date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
     <TextView
         android:id="@+id/text_view_progress_calories"
         android:layout_width="wrap_content"
@@ -248,10 +248,10 @@
         style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:text="Change Goal"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

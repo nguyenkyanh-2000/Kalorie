@@ -5,12 +5,11 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="right"
+    android:layout_gravity="end"
     android:background="@color/colorBackground"
     android:textAlignment="viewEnd"
     tools:context=".ui.view.AddFoodFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <Button
         android:id="@+id/fragment_add_food_btn_back"

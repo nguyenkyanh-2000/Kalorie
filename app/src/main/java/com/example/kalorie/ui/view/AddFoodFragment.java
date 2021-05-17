@@ -26,7 +26,6 @@ AddFoodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static AddFoodFragment newInstance(String param1, String param2) {
         AddFoodFragment fragment = new AddFoodFragment();
         Bundle args = new Bundle();
