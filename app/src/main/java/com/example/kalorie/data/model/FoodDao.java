@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface FoodDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     void insertFood(Food food);
 
     @Delete

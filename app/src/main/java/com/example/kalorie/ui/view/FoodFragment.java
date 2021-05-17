@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +23,7 @@ import com.example.kalorie.data.model.Food;
 import com.example.kalorie.ui.adapter.FoodRecyclerViewAdapter;
 import com.example.kalorie.R;
 import com.example.kalorie.ui.adapter.FoodRecyclerViewInterface;
+import com.example.kalorie.ui.viewmodel.FoodViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,7 @@ import java.util.List;
  */
 public class FoodFragment extends Fragment implements FoodRecyclerViewInterface {
 
+    FoodViewModel foodViewModel;
 
     public FoodFragment() {
     }
@@ -38,6 +42,14 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
+        foodViewModel.getAllFood().observe(getActivity(), new Observer<List<Food>>() {
+            @Override
+            public void onChanged(List<Food> foods) {
+            }
+        });
     }
 
     @Override
@@ -59,6 +71,7 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
 
     @Override
     public void onItemClick(int position) {
+        Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
         NavController nav = Navigation.findNavController(getView());
         HomeFragmentDirections.ActionHomeFragmentToFoodInfoFragment action = HomeFragmentDirections
                 .actionHomeFragmentToFoodInfoFragment(foods.get(position));

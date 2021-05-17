@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import com.example.kalorie.R;
+import com.example.kalorie.ui.viewmodel.FoodViewModel;
 
 public class MainActivity extends AppCompatActivity {
 

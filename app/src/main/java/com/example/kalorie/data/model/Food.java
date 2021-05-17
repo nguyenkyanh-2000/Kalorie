@@ -24,13 +24,22 @@ public class Food implements Parcelable {
 
     @ColumnInfo
     private int foodAmount;
-    
+
     // Temporary
     private String foodCalorie;
 
     public Food(){
 
     }
+
+    public Food(int foodId, String foodName, String foodDescription, String foodCalorie){
+        this.foodId = foodId;
+        this.foodName = foodName;
+        this.foodDescription = foodDescription;
+        this.foodCalorie = foodCalorie;
+    }
+
+
     protected Food(Parcel in) {
         foodId = in.readInt();
         nutrientId = in.readInt();
