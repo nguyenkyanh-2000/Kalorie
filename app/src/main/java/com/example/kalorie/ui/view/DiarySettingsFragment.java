@@ -51,9 +51,6 @@ public class DiarySettingsFragment extends Fragment {
         Button btn_add_food_back = view.findViewById(R.id.fragment_diary_settings_btn_back);
         btn_add_food_back.setOnClickListener(v -> navController.navigate(R.id.action_diarySettingsFragment_to_homeFragment));
 
-        Button btn_add_food_save = view.findViewById(R.id.fragment_diary_settings_btn_save);
-        btn_add_food_save.setOnClickListener(v -> navController.navigate(R.id.action_diarySettingsFragment_to_homeFragment));
-
         Button btn_add_food_change_goals = view.findViewById(R.id.fragment_diary_settings_btn_change_goals);
         btn_add_food_change_goals.setOnClickListener(v -> navController.navigate(R.id.action_diarySettingsFragment_to_changeGoalFragment));
 
