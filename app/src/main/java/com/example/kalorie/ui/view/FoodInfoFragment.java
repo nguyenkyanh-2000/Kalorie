@@ -49,11 +49,11 @@ public class FoodInfoFragment extends Fragment {
         View view = binding.getRoot();
 
         Food food = null;
+
         if (getArguments() != null) {
             FoodInfoFragmentArgs args = FoodInfoFragmentArgs.fromBundle(getArguments());
             food = args.getFood();
         }
-
         binding.setFood(food);
         return view;
     }

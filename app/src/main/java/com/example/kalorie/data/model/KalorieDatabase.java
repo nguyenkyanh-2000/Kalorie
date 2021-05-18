@@ -46,6 +46,7 @@ public abstract class KalorieDatabase extends RoomDatabase{
         protected Void doInBackground(Void... voids) {
             foodDao.insertFood(new Food(1, "lol", "test","42"));
             foodDao.insertFood(new Food(2,"wa", "test", "43"));
+            foodDao.insertFood(new Food(3, "third", "test 3", "333"));
             return null;
         }
     }

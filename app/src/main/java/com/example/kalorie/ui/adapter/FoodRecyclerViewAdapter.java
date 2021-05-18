@@ -7,18 +7,17 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kalorie.R;
 import com.example.kalorie.data.model.Food;
+
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link Food}
- */
+
 public class FoodRecyclerViewAdapter extends RecyclerView.Adapter<FoodRecyclerViewAdapter.ViewHolder> {
 
-    private List<Food> mValues;
-    private FoodRecyclerViewInterface foodRecyclerViewInterface;
+    private final FoodRecyclerViewInterface foodRecyclerViewInterface;
+    private static List<Food> foodList = new ArrayList<Food>();
 
-    public FoodRecyclerViewAdapter(List<Food> mValues, FoodRecyclerViewInterface foodRecyclerViewInterface) {
-        this.mValues = mValues;
+    public FoodRecyclerViewAdapter( FoodRecyclerViewInterface foodRecyclerViewInterface) {
         this.foodRecyclerViewInterface = foodRecyclerViewInterface;
     }
 
@@ -31,14 +30,20 @@ public class FoodRecyclerViewAdapter extends RecyclerView.Adapter<FoodRecyclerVi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mNameView.setText(mValues.get(position).getFoodName());
-        holder.mCalorieView.setText(mValues.get(position).getFoodCalorie());
-        holder.mDetailsView.setText(mValues.get(position).getFoodDescription());
+        Food currentFood = foodList.get(position);
+        holder.mNameView.setText(currentFood.getFoodName());
+        holder.mCalorieView.setText(currentFood.getFoodCalorie());
+        holder.mDetailsView.setText(currentFood.getFoodDescription());
+    }
+
+    public void setFoodList(List<Food> foodList){
+        this.foodList = foodList;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return foodList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -53,7 +58,7 @@ public class FoodRecyclerViewAdapter extends RecyclerView.Adapter<FoodRecyclerVi
             mNameView = (TextView) view.findViewById(R.id.item_food_name);
             mCalorieView = (TextView) view.findViewById(R.id.item_food_calorie);
             mDetailsView = (TextView) view.findViewById(R.id.item_food_description);
-            itemView.setOnClickListener(v -> foodRecyclerViewInterface.onItemClick(getAdapterPosition()));
+            itemView.setOnClickListener(v -> foodRecyclerViewInterface.onItemClick(getAbsoluteAdapterPosition()));
         }
 
     }

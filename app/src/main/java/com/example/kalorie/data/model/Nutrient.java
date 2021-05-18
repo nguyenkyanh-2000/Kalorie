@@ -1,5 +1,6 @@
 package com.example.kalorie.data.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,9 +10,16 @@ public class Nutrient {
     @PrimaryKey
     private int nutrientId;
 
+    @ColumnInfo
     private float amountCalorie;
+
+    @ColumnInfo
     private float amountProtein;
+
+    @ColumnInfo
     private float amountFat;
+
+    @ColumnInfo
     private float amountCarb;
 
     public Nutrient(){}

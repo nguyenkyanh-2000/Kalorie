@@ -35,6 +35,7 @@ import java.util.List;
 public class FoodFragment extends Fragment implements FoodRecyclerViewInterface {
 
     FoodViewModel foodViewModel;
+    public static List<Food> foodList;
 
     public FoodFragment() {
     }
@@ -42,14 +43,6 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-        foodViewModel.getAllFood().observe(getActivity(), new Observer<List<Food>>() {
-            @Override
-            public void onChanged(List<Food> foods) {
-            }
-        });
     }
 
     @Override
@@ -58,12 +51,20 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
 
         View view = inflater.inflate(R.layout.fragment_item_list_food, container, false);
 
-
-        Context context = view.getContext();
-
         RecyclerView recyclerView = (RecyclerView) view;
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new FoodRecyclerViewAdapter(foods,this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        FoodRecyclerViewAdapter adapter = new FoodRecyclerViewAdapter(this);
+        recyclerView.setAdapter(adapter);
+
+        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
+        foodViewModel.getAllFood().observe(getActivity(), new Observer<List<Food>>() {
+            @Override
+            public void onChanged(List<Food> foods) {
+                adapter.setFoodList(foods);
+                foodList = foods;
+            }
+        });
 
         return view;
     }
@@ -71,15 +72,15 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
 
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
+        Food currentFood = foodList.get(position);
         NavController nav = Navigation.findNavController(getView());
         HomeFragmentDirections.ActionHomeFragmentToFoodInfoFragment action = HomeFragmentDirections
-                .actionHomeFragmentToFoodInfoFragment(foods.get(position));
+                .actionHomeFragmentToFoodInfoFragment(currentFood);
         nav.navigate(action);
     }
 
 
-    // Demo food generation
+    /* Demo food generation
 
     public static List<Food> foods = new ArrayList<Food>();
     private static int COUNT = 25;
@@ -104,4 +105,5 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
         return dummyFood;
     }
 
+    */
 }
