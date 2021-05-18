@@ -16,30 +16,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.kalorie.R;
+import com.example.kalorie.databinding.FragmentAddFoodBinding;
+import com.example.kalorie.databinding.FragmentDiarySettingsBinding;
 
 public class DiarySettingsFragment extends Fragment {
 
-    public DiarySettingsFragment() {
+    FragmentDiarySettingsBinding binding;
 
-    }
-
-    public static DiarySettingsFragment newInstance(String param1, String param2) {
-        DiarySettingsFragment fragment = new DiarySettingsFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public DiarySettingsFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diary_settings, container, false);
+        binding = FragmentDiarySettingsBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
@@ -48,19 +39,15 @@ public class DiarySettingsFragment extends Fragment {
         final NavController navController = Navigation.findNavController(view);
         super.onViewCreated(view, savedInstanceState);
 
-        Button btn_add_food_back = view.findViewById(R.id.fragment_diary_settings_btn_back);
-        btn_add_food_back.setOnClickListener(v -> navController.navigate(R.id.action_diarySettingsFragment_to_homeFragment));
+        binding.fragmentDiarySettingsBtnBack.setOnClickListener(v -> navController
+                .navigate(R.id.action_diarySettingsFragment_to_homeFragment));
 
-        Button btn_add_food_change_date = view.findViewById(R.id.fragment_diary_settings_btn_change_date);
+        binding.fragmentDiarySettingsBtnChangeGoals.setOnClickListener(v -> navController
+                .navigate(R.id.action_diarySettingsFragment_to_changeGoalFragment));
 
-        Button btn_add_food_change_goals = view.findViewById(R.id.fragment_diary_settings_btn_change_goals);
-        btn_add_food_change_goals.setOnClickListener(v -> navController.navigate(R.id.action_diarySettingsFragment_to_changeGoalFragment));
-
-        ProgressBar progressBar_calories = view.findViewById(R.id.progress_bar_calories);
-        TextView textView_calories = view.findViewById(R.id.text_view_progress_calories);
-
-        progressBar_calories.setProgress(50);
-        textView_calories.setText("50%");
+        // TODO: Linked the progress bar with the calculations in database.
+        binding.progressBarCalories.setProgress(50);
+        binding.textViewProgressCalories.setText("50%");
 
 
 

@@ -18,20 +18,20 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.kalorie.R;
+import com.example.kalorie.databinding.FragmentAddFoodBinding;
 
-public class
-AddFoodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    public AddFoodFragment() {
-        // Required empty public constructor
-    }
+    FragmentAddFoodBinding binding;
 
+    public AddFoodFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_food, container, false);
+        binding = FragmentAddFoodBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
@@ -41,20 +41,15 @@ AddFoodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
         super.onViewCreated(view, savedInstanceState);
 
-        Button btn_add_food_back = view.findViewById(R.id.fragment_add_food_btn_back);
-        btn_add_food_back.setOnClickListener(v -> navController.navigate(R.id.action_addFoodFragment_to_homeFragment));
+        binding.fragmentAddFoodBtnBack.setOnClickListener(v -> navController.navigate(R.id.action_addFoodFragment_to_homeFragment));
+        binding.fragmentAddFoodBtnSave.setOnClickListener(v -> navController.navigate(R.id.action_addFoodFragment_to_homeFragment));
 
-        Button btn_add_food_save = view.findViewById(R.id.fragment_add_food_btn_save);
-        btn_add_food_save.setOnClickListener(v -> navController.navigate(R.id.action_addFoodFragment_to_homeFragment));
-
-        Spinner spinner = view.findViewById(R.id.spinner2);
+        // TODO: Deal with the spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.units, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-
-
+        binding.spinner2.setAdapter(adapter);
+        binding.spinner2.setOnItemSelectedListener(this);
     }
 
     @Override

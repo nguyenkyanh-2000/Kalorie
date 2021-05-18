@@ -11,29 +11,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.kalorie.R;
+import com.example.kalorie.databinding.FragmentAddFoodBinding;
+import com.example.kalorie.databinding.FragmentCalorieNumberBinding;
 
 public class CalorieNumberFragment extends Fragment {
 
-
-    public static CalorieNumberFragment newInstance() {
-        return new CalorieNumberFragment();
-    }
+    FragmentCalorieNumberBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_calorie_number, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        binding = FragmentCalorieNumberBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
+
         view.setOnClickListener(v -> navController.navigate(R.id.action_homeFragment_to_diarySettingsFragment));
     }
 }

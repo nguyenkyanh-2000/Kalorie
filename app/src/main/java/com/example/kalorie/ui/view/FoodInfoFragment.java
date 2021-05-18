@@ -24,15 +24,15 @@ import static android.content.ContentValues.TAG;
 
 public class FoodInfoFragment extends Fragment {
 
+    FragmentFoodInfoBinding binding;
+    Food currentFood;
 
-    public FoodInfoFragment() {
-        // Required empty public constructor
-    }
+    public FoodInfoFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentFoodInfoBinding binding = FragmentFoodInfoBinding.inflate(inflater, container, false);
+        binding = FragmentFoodInfoBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         return view;
     }
@@ -40,12 +40,19 @@ public class FoodInfoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
-        super.onViewCreated(view, savedInstanceState);
+        if (getArguments() != null){
+            FoodInfoFragmentArgs args = FoodInfoFragmentArgs.fromBundle(getArguments());
+            currentFood = args.getFood();
+        }
 
-        Button btn_add_food_back = view.findViewById(R.id.fragment_food_info_btn_back);
-        btn_add_food_back.setOnClickListener(v -> navController.navigate(R.id.action_foodInfoFragment_to_homeFragment));
+        binding.fragmentFoodInfoBtnBack.setOnClickListener(v -> navController
+                .navigate(R.id.action_foodInfoFragment_to_homeFragment));
 
+        binding.fragmentFoodInfoTextViewCalorie.setText(currentFood.getFoodCalorie());
+        binding.fragmentFoodInfoTextViewName.setText(currentFood.getFoodName());
+        binding.fragmentFoodInfoTextViewDescription.setText(currentFood.getFoodDescription());
     }
 }

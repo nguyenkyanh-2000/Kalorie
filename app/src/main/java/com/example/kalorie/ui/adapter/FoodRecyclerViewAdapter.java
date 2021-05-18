@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kalorie.R;
 import com.example.kalorie.data.model.Food;
+import com.example.kalorie.databinding.FragmentItemFoodBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 public class FoodRecyclerViewAdapter extends RecyclerView.Adapter<FoodRecyclerViewAdapter.ViewHolder> {
 
     private final FoodRecyclerViewInterface foodRecyclerViewInterface;
-    private static List<Food> foodList = new ArrayList<Food>();
+    private static List<Food> foodList = new ArrayList<>();
 
     public FoodRecyclerViewAdapter( FoodRecyclerViewInterface foodRecyclerViewInterface) {
         this.foodRecyclerViewInterface = foodRecyclerViewInterface;
@@ -55,9 +56,9 @@ public class FoodRecyclerViewAdapter extends RecyclerView.Adapter<FoodRecyclerVi
         public ViewHolder(View view){
             super(view);
             mView = view;
-            mNameView = (TextView) view.findViewById(R.id.item_food_name);
-            mCalorieView = (TextView) view.findViewById(R.id.item_food_calorie);
-            mDetailsView = (TextView) view.findViewById(R.id.item_food_description);
+            mNameView = view.findViewById(R.id.item_food_name);
+            mCalorieView = view.findViewById(R.id.item_food_calorie);
+            mDetailsView = view.findViewById(R.id.item_food_description);
             itemView.setOnClickListener(v -> foodRecyclerViewInterface.onItemClick(getAbsoluteAdapterPosition()));
         }
 

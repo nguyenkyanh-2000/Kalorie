@@ -1,6 +1,5 @@
 package com.example.kalorie.ui.view;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,36 +15,34 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.kalorie.data.model.Food;
+import com.example.kalorie.databinding.FragmentItemListFoodBinding;
 import com.example.kalorie.ui.adapter.FoodRecyclerViewAdapter;
-import com.example.kalorie.R;
 import com.example.kalorie.ui.adapter.FoodRecyclerViewInterface;
 import com.example.kalorie.ui.viewmodel.FoodViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
+public class FoodListFragment extends Fragment implements FoodRecyclerViewInterface {
 
-/**
- * A fragment representing a list of Items.
- */
-public class FoodFragment extends Fragment implements FoodRecyclerViewInterface {
-
+    FragmentItemListFoodBinding binding;
     FoodViewModel foodViewModel;
-    public static List<Food> foodList;
+    public static List<Food> currentFoodList;
 
-    public FoodFragment() {
-    }
-
+    public FoodListFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = FragmentItemListFoodBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
+    }
 
-        View view = inflater.inflate(R.layout.fragment_item_list_food, container, false);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         RecyclerView recyclerView = (RecyclerView) view;
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -54,25 +51,19 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
         recyclerView.setAdapter(adapter);
 
         foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-        foodViewModel.getAllFood().observe(getActivity(), new Observer<List<Food>>() {
-            @Override
-            public void onChanged(List<Food> foods) {
-                adapter.setFoodList(foods);
-                foodList = foods;
-            }
+        foodViewModel.getAllFood().observe(getActivity(), foodList -> {
+            adapter.setFoodList(foodList);
+            currentFoodList = foodList;
         });
-
-        return view;
     }
-
 
     @Override
     public void onItemClick(int position) {
-        Food currentFood = foodList.get(position);
-        NavController nav = Navigation.findNavController(getView());
+        Food currentFood = currentFoodList.get(position);
+        NavController navController = Navigation.findNavController(getView());
         HomeFragmentDirections.ActionHomeFragmentToFoodInfoFragment action = HomeFragmentDirections
                 .actionHomeFragmentToFoodInfoFragment(currentFood);
-        nav.navigate(action);
+        navController.navigate(action);
     }
 
 

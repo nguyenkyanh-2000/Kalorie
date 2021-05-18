@@ -18,34 +18,24 @@ import android.widget.Toast;
 
 import com.example.kalorie.R;
 import com.example.kalorie.data.model.Food;
+import com.example.kalorie.databinding.FragmentAddFoodBinding;
+import com.example.kalorie.databinding.FragmentHomeBinding;
 import com.example.kalorie.ui.viewmodel.FoodViewModel;
 
 import java.util.List;
 
 public class HomeFragment extends Fragment{
 
-    FoodViewModel foodViewModel;
+    FragmentHomeBinding binding;
 
-    public HomeFragment() {
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-        foodViewModel.getAllFood().observe(this, new Observer<List<Food>>() {
-            @Override
-            public void onChanged(List<Food> foods) {
-                Toast.makeText(getActivity(), "lol", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+    public HomeFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
@@ -55,8 +45,8 @@ public class HomeFragment extends Fragment{
 
         super.onViewCreated(view, savedInstanceState);
 
-        Button btn_add_food = view.findViewById(R.id.fragment_home_btn_add_food);
-        btn_add_food.setOnClickListener(v -> navController.navigate(R.id.action_homeFragment_to_addFoodFragment));
+        binding.fragmentHomeBtnAddFood.setOnClickListener(v -> navController
+                .navigate(R.id.action_homeFragment_to_addFoodFragment));
 
     }
 

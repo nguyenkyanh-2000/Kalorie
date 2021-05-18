@@ -14,32 +14,31 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.kalorie.R;
+import com.example.kalorie.databinding.FragmentAddFoodBinding;
+import com.example.kalorie.databinding.FragmentChangeGoalBinding;
 
 public class ChangeGoalFragment extends Fragment {
 
+    FragmentChangeGoalBinding binding;
 
-    public ChangeGoalFragment() {
-        // Required empty public constructor
-    }
-
+    public ChangeGoalFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change_goal, container, false);
+        binding = FragmentChangeGoalBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
         final NavController navController = Navigation.findNavController(view);
         super.onViewCreated(view, savedInstanceState);
 
-        Button btn_change_goal_back = view.findViewById(R.id.fragment_change_goal_btn_back);
-        btn_change_goal_back.setOnClickListener(v -> navController.navigate(R.id.action_changeGoalFragment_to_diarySettingsFragment));
-
-        Button btn_change_goal_save = view.findViewById(R.id.fragment_change_goal_btn_save);
-        btn_change_goal_save.setOnClickListener(v -> navController.navigate(R.id.action_changeGoalFragment_to_diarySettingsFragment));
+        binding.fragmentChangeGoalBtnBack.setOnClickListener(v -> navController
+               .navigate(R.id.action_changeGoalFragment_to_diarySettingsFragment));
+        binding.fragmentChangeGoalBtnSave.setOnClickListener(v -> navController
+               .navigate(R.id.action_changeGoalFragment_to_diarySettingsFragment));
     }
 }

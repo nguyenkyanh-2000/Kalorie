@@ -15,44 +15,40 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.kalorie.R;
+import com.example.kalorie.databinding.FragmentAddFoodBinding;
+import com.example.kalorie.databinding.FragmentHomeBinding;
+import com.example.kalorie.databinding.FragmentNutrientCompositionBinding;
 
 public class NutrientCompositionFragment extends Fragment {
 
-    public NutrientCompositionFragment() {
-    }
+    FragmentNutrientCompositionBinding binding;
 
+    public NutrientCompositionFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nutrient_composition, container, false);
+        binding = FragmentNutrientCompositionBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-
-
         final NavController navController = Navigation.findNavController(view);
-        view.setOnClickListener(v -> navController.navigate(R.id.action_homeFragment_to_diarySettingsFragment));
 
-        ProgressBar progressBar_proteins = view.findViewById(R.id.progress_bar_proteins);
-        ProgressBar progressBar_fats = view.findViewById(R.id.progress_bar_fats);
-        ProgressBar progressBar_carbs = view.findViewById(R.id.progress_bar_carbs);
-        TextView textView_proteins = view.findViewById(R.id.text_view_progress_proteins);
-        TextView textView_fats = view.findViewById(R.id.text_view_progress_fats);
-        TextView textView_carbs = view.findViewById(R.id.text_view_progress_carbs);
+        view.setOnClickListener(v -> navController
+                .navigate(R.id.action_homeFragment_to_diarySettingsFragment));
 
         // demo Progress Bars
-        progressBar_carbs.setProgress(30);
-        progressBar_fats.setProgress(60);
-        progressBar_proteins.setProgress(90);
-        textView_carbs.setText("30%");
-        textView_fats.setText("60%");
-        textView_proteins.setText("90%");
-
+        binding.progressBarCarbs.setProgress(30);
+        binding.progressBarFats.setProgress(60);
+        binding.progressBarProteins.setProgress(90);
+        binding.textViewProgressCarbs.setText("30%");
+        binding.textViewProgressFats.setText("60%");
+        binding.textViewProgressProteins.setText("90%");
     }
 }
