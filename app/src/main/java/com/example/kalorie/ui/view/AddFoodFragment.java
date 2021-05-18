@@ -26,17 +26,6 @@ AddFoodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
         // Required empty public constructor
     }
 
-    public static AddFoodFragment newInstance(String param1, String param2) {
-        AddFoodFragment fragment = new AddFoodFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

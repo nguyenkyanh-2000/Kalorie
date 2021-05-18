@@ -29,32 +29,11 @@ public class FoodInfoFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static FoodInfoFragment newInstance() {
-        FoodInfoFragment fragment = new FoodInfoFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentFoodInfoBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_info
-                , container, false);
+        FragmentFoodInfoBinding binding = FragmentFoodInfoBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-        Food food = null;
-
-        if (getArguments() != null) {
-            FoodInfoFragmentArgs args = FoodInfoFragmentArgs.fromBundle(getArguments());
-            food = args.getFood();
-        }
-        binding.setFood(food);
         return view;
     }
 

@@ -29,13 +29,6 @@ public class HomeFragment extends Fragment{
     public HomeFragment() {
     }
 
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

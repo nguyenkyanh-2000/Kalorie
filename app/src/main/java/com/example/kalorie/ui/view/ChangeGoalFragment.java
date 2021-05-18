@@ -23,20 +23,6 @@ public class ChangeGoalFragment extends Fragment {
     }
 
 
-    public static ChangeGoalFragment newInstance(String param1, String param2) {
-        ChangeGoalFragment fragment = new ChangeGoalFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
