@@ -10,8 +10,6 @@ public class Food{
     @PrimaryKey(autoGenerate = true)
     private int foodId;
 
-    private int nutrientId;
-
     @ColumnInfo
     private String foodName;
 
@@ -21,28 +19,48 @@ public class Food{
     @ColumnInfo
     private int foodAmount;
 
-    // Temporary
-    private String foodCalorie;
+    @ColumnInfo
+    private int foodCalorie;
+
+    @ColumnInfo
+    private int foodFat;
+
+    @ColumnInfo
+    private int foodProtein;
+
+    @ColumnInfo
+    private int foodCarb;
 
     public Food(){
-
-    }
-
-    public Food(int foodId, String foodName, String foodDescription, String foodCalorie){
-        this.foodId = foodId;
-        this.foodName = foodName;
-        this.foodDescription = foodDescription;
-        this.foodCalorie = foodCalorie;
-    }
-
-    public Food(String foodName, String foodDescription, String foodCalorie){
-        this.foodName = foodName;
-        this.foodDescription = foodDescription;
-        this.foodCalorie = foodCalorie;
     }
 
 
     // Getters & Setters
+
+
+    public int getFoodFat() {
+        return foodFat;
+    }
+
+    public void setFoodFat(int foodFat) {
+        this.foodFat = foodFat;
+    }
+
+    public int getFoodProtein() {
+        return foodProtein;
+    }
+
+    public void setFoodProtein(int foodProtein) {
+        this.foodProtein = foodProtein;
+    }
+
+    public int getFoodCarb() {
+        return foodCarb;
+    }
+
+    public void setFoodCarb(int foodCarb) {
+        this.foodCarb = foodCarb;
+    }
 
     public int getFoodId() {
         return foodId;
@@ -50,14 +68,6 @@ public class Food{
 
     public void setFoodId(int foodId) {
         this.foodId = foodId;
-    }
-
-    public int getNutrientId() {
-        return nutrientId;
-    }
-
-    public void setNutrientId(int nutrientId) {
-        this.nutrientId = nutrientId;
     }
 
     public String getFoodName() {
@@ -84,11 +94,11 @@ public class Food{
         this.foodAmount = foodAmount;
     }
 
-    public String getFoodCalorie() {
+    public int getFoodCalorie() {
         return foodCalorie;
     }
 
-    public void setFoodCalorie(String foodCalorie) {
+    public void setFoodCalorie(int foodCalorie) {
         this.foodCalorie = foodCalorie;
     }
 }

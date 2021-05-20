@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -57,9 +56,13 @@ public class FoodInfoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
-        binding.fragmentFoodInfoTextViewCalorie.setText(currentFood.getFoodCalorie());
         binding.fragmentFoodInfoTextViewName.setText(currentFood.getFoodName());
         binding.fragmentFoodInfoTextViewDescription.setText(currentFood.getFoodDescription());
+        binding.fragmentFoodInfoTextViewCalorie.setText(String.valueOf(currentFood.getFoodCalorie()));
+        binding.fragmentAddFoodTextViewCarb.setText(String.valueOf(currentFood.getFoodCarb()));
+        binding.fragmentFoodInfoTextViewProtein.setText(String.valueOf(currentFood.getFoodProtein()));
+        binding.fragmentAddFoodTextViewFat.setText(String.valueOf(currentFood.getFoodFat()));
+        binding.fragmentAddFoodTextViewAmount.setText(String.valueOf(currentFood.getFoodAmount()));
 
         binding.fragmentFoodInfoBtnBack.setOnClickListener(v -> {
             navController.navigate(R.id.action_foodInfoFragment_to_homeFragment);
@@ -68,7 +71,7 @@ public class FoodInfoFragment extends Fragment {
         binding.fragmentFoodInfoBtnRemove.setOnClickListener(v -> {
             navController.navigate(R.id.action_foodInfoFragment_to_homeFragment);
             foodViewModel.delete(currentFood);
-            Toast.makeText(getActivity(), "Food removed", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Food removed", Toast.LENGTH_SHORT).show();
         });
 
     }

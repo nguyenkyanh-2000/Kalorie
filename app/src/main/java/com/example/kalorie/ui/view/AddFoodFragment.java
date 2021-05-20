@@ -95,14 +95,26 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
                     .getText().toString().trim();
             String foodAmountInput = binding.fragmentAddFoodEditTextAmount
                     .getText().toString().trim();
+            String foodCarbInput = binding.fragmentAddFoodEditTextCarb
+                    .getText().toString().trim();
+            String foodProteinInput = binding.fragmentAddFoodEditTextProtein
+                    .getText().toString().trim();
+            String foodFatInput = binding.fragmentAddFoodEditTextFat
+                    .getText().toString().trim();
 
             if ((!foodAmountInput.isEmpty() && !foodCalorieInput.isEmpty()
-                    && !foodNameInput.isEmpty() && !foodDescriptionInput.isEmpty())){
+                    && !foodNameInput.isEmpty() && !foodDescriptionInput.isEmpty()
+                    && !foodCarbInput.isEmpty()) && !foodProteinInput.isEmpty()
+                    && !foodFatInput.isEmpty()){
+
                 binding.fragmentAddFoodBtnSave.setEnabled(true);
                 currentFood.setFoodName(foodNameInput);
                 currentFood.setFoodDescription(foodDescriptionInput);
-                currentFood.setFoodCalorie(foodCalorieInput);
+                currentFood.setFoodCalorie(Integer.parseInt(foodCalorieInput));
                 currentFood.setFoodAmount(Integer.parseInt(foodAmountInput));
+                currentFood.setFoodCarb(Integer.parseInt(foodCarbInput));
+                currentFood.setFoodProtein(Integer.parseInt(foodProteinInput));
+                currentFood.setFoodFat(Integer.parseInt(foodFatInput));
             }
         }
 
