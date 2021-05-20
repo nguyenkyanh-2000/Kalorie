@@ -59,7 +59,7 @@ public class FoodRecyclerViewAdapter extends RecyclerView.Adapter<FoodRecyclerVi
             mNameView = view.findViewById(R.id.item_food_name);
             mCalorieView = view.findViewById(R.id.item_food_calorie);
             mDetailsView = view.findViewById(R.id.item_food_description);
-            itemView.setOnClickListener(v -> foodRecyclerViewInterface.onItemClick(getAbsoluteAdapterPosition()));
+            itemView.setOnClickListener(v -> foodRecyclerViewInterface.onItemClick(getBindingAdapterPosition()));
         }
 
     }

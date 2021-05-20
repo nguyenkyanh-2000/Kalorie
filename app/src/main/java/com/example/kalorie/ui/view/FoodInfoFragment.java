@@ -44,9 +44,8 @@ public class FoodInfoFragment extends Fragment {
         }
 
         // Get the food using Food View Model
-        foodViewModel.getFoodById(currentFoodId).observe(getActivity(), food ->{
+        foodViewModel.getFoodById(currentFoodId).observe(getViewLifecycleOwner(), food ->{
             currentFood = food;
-            Toast.makeText(getActivity(), currentFood.getFoodName(), Toast.LENGTH_LONG).show();
         });
 
         return view;
@@ -58,9 +57,12 @@ public class FoodInfoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
+        binding.fragmentFoodInfoTextViewCalorie.setText(currentFood.getFoodCalorie());
+        binding.fragmentFoodInfoTextViewName.setText(currentFood.getFoodName());
+        binding.fragmentFoodInfoTextViewDescription.setText(currentFood.getFoodDescription());
+
         binding.fragmentFoodInfoBtnBack.setOnClickListener(v -> {
             navController.navigate(R.id.action_foodInfoFragment_to_homeFragment);
-            Toast.makeText(getActivity(), "Food not saved", Toast.LENGTH_LONG).show();
         });
 
         binding.fragmentFoodInfoBtnRemove.setOnClickListener(v -> {
@@ -69,8 +71,5 @@ public class FoodInfoFragment extends Fragment {
             Toast.makeText(getActivity(), "Food removed", Toast.LENGTH_LONG).show();
         });
 
-        binding.fragmentFoodInfoTextViewCalorie.setText(currentFood.getFoodCalorie());
-        binding.fragmentFoodInfoTextViewName.setText(currentFood.getFoodName());
-        binding.fragmentFoodInfoTextViewDescription.setText(currentFood.getFoodDescription());
     }
 }

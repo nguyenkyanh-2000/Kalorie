@@ -50,7 +50,7 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
         FoodRecyclerViewAdapter adapter = new FoodRecyclerViewAdapter(this);
         recyclerView.setAdapter(adapter);
 
-        foodViewModel.getAllFood().observe(getActivity(), foodList -> {
+        foodViewModel.getAllFood().observe(getViewLifecycleOwner(), foodList -> {
             adapter.setFoodList(foodList);
             currentFoodList = foodList;
         });
@@ -71,31 +71,4 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
 
     }
 
-
-    /* Demo food generation
-
-    public static List<Food> foods = new ArrayList<Food>();
-    private static int COUNT = 25;
-
-    static {
-        // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
-        }
-    }
-
-    private static void addItem(Food item) {
-        foods.add(item);
-    }
-
-    private static Food createDummyItem(int index){
-        Food dummyFood = new Food();
-        dummyFood.setFoodName("Food " + String.valueOf(index));
-        dummyFood.setFoodDescription("Item number " + String.valueOf(index));
-        dummyFood.setFoodCalorie(String.valueOf(index * 100));
-        dummyFood.setFoodAmount(2);
-        return dummyFood;
-    }
-
-    */
 }

@@ -1,6 +1,7 @@
 package com.example.kalorie.data.model;
 
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -10,11 +11,19 @@ public class Meal {
     @PrimaryKey
     private Integer mealId;
 
+    @ColumnInfo
     private String mealDate;
 
+    @ColumnInfo
     private float goalCarb;
+
+    @ColumnInfo
     private float goalFat;
+
+    @ColumnInfo
     private float goalProtein;
+
+    @ColumnInfo
     private float goalCalorie;
 
     private float usedCarb;

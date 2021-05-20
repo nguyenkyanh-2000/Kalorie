@@ -28,8 +28,6 @@ public class Food{
 
     }
 
-    // Parcelable
-
     public Food(int foodId, String foodName, String foodDescription, String foodCalorie){
         this.foodId = foodId;
         this.foodName = foodName;

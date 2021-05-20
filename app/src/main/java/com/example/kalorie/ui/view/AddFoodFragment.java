@@ -1,6 +1,8 @@
 package com.example.kalorie.ui.view;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +26,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    FragmentAddFoodBinding binding;
+    FragmentAddFoodBinding binding = null;
+    Food currentFood = new Food();
     FoodViewModel foodViewModel;
-    Food currentFood;
 
     public AddFoodFragment() {}
 
@@ -38,22 +40,32 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         return binding.getRoot();
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         final NavController navController = Navigation.findNavController(view);
         super.onViewCreated(view, savedInstanceState);
 
+        // Save button is only enabled after all fields are filled.
+
+        binding.fragmentAddFoodBtnSave.setEnabled(false);
+        binding.fragmentAddFoodEditTextFoodName.addTextChangedListener(addFoodWatcher);
+        binding.fragmentAddFoodEditTextAmount.addTextChangedListener(addFoodWatcher);
+        binding.fragmentAddFoodEditTextCalorie.addTextChangedListener(addFoodWatcher);
+        binding.fragmentAddFoodTextInputDescription.addTextChangedListener(addFoodWatcher);
+
+        // Bindings for the SAVE and BACK button
 
         binding.fragmentAddFoodBtnBack.setOnClickListener(v -> {
             navController.navigate(R.id.action_addFoodFragment_to_homeFragment);
-            Toast.makeText(getContext(), "No food added.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "No food added.", Toast.LENGTH_SHORT).show();
         });
 
         binding.fragmentAddFoodBtnSave.setOnClickListener(v -> {
             foodViewModel.insert(currentFood);
             navController.navigate(R.id.action_addFoodFragment_to_homeFragment);
-            Toast.makeText(getContext(), "Food added", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Food added", Toast.LENGTH_SHORT).show();
         });
 
         // TODO: Deal with the spinner
@@ -64,14 +76,41 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         binding.spinner2.setOnItemSelectedListener(this);
     }
 
-    public void savedFood(){
-        String foodName = binding.fragmentAddFoodEditTextFoodName.getText().toString();
-        String foodDescription = binding.fragmentAddFoodTextInputDescription.getText().toString();
-        String foodCalorie = binding.fragmentAddFoodEditTextCalorie.getText().toString();
-        int foodAmount = Integer.parseInt(binding.fragmentAddFoodEditTextAmount.getText().toString());
 
-        return;
-    }
+
+    // Text watcher for input fields
+
+    private TextWatcher addFoodWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            String foodNameInput = binding.fragmentAddFoodEditTextFoodName
+                        .getText().toString().trim();
+            String foodCalorieInput = binding.fragmentAddFoodEditTextCalorie
+                    .getText().toString().trim();
+            String foodDescriptionInput = binding.fragmentAddFoodTextInputDescription
+                    .getText().toString().trim();
+            String foodAmountInput = binding.fragmentAddFoodEditTextAmount
+                    .getText().toString().trim();
+
+            if ((!foodAmountInput.isEmpty() && !foodCalorieInput.isEmpty()
+                    && !foodNameInput.isEmpty() && !foodDescriptionInput.isEmpty())){
+                binding.fragmentAddFoodBtnSave.setEnabled(true);
+                currentFood.setFoodName(foodNameInput);
+                currentFood.setFoodDescription(foodDescriptionInput);
+                currentFood.setFoodCalorie(foodCalorieInput);
+                currentFood.setFoodAmount(Integer.parseInt(foodAmountInput));
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {}
+    };
+
+    // Methods for the spinner
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -82,4 +121,5 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 }
