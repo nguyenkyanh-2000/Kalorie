@@ -28,6 +28,7 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
 
     FragmentAddFoodBinding binding;
     FoodViewModel foodViewModel;
+    Food currentFood;
 
     public AddFoodFragment() {}
 
@@ -35,6 +36,7 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAddFoodBinding.inflate(inflater, container, false);
+        foodViewModel = new ViewModelProvider(getActivity()).get(FoodViewModel.class);
         View view = binding.getRoot();
         return view;
     }
@@ -43,8 +45,9 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         final NavController navController = Navigation.findNavController(view);
-        foodViewModel = new ViewModelProvider(getActivity()).get(FoodViewModel.class);
         super.onViewCreated(view, savedInstanceState);
+
+
         binding.fragmentAddFoodBtnBack.setOnClickListener(v -> {
             navController.navigate(R.id.action_addFoodFragment_to_homeFragment);
             Toast.makeText(getContext(), "No food added.", Toast.LENGTH_LONG).show();
@@ -56,7 +59,6 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
             navController.navigate(R.id.action_addFoodFragment_to_homeFragment);
             Toast.makeText(getContext(), "Food added", Toast.LENGTH_LONG).show();
         });
-
 
         // TODO: Deal with the spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),

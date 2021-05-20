@@ -25,6 +25,10 @@ public class Meal {
 
     public Meal(){};
 
+
+
+    // Setters & Getters
+
     public Integer getMealId() {
         return mealId;
     }

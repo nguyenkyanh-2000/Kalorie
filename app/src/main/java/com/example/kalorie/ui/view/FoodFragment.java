@@ -36,6 +36,7 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentItemListFoodBinding.inflate(inflater, container, false);
+        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
         View view = binding.getRoot();
         return view;
     }
@@ -50,7 +51,6 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
         FoodRecyclerViewAdapter adapter = new FoodRecyclerViewAdapter(this);
         recyclerView.setAdapter(adapter);
 
-        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
         foodViewModel.getAllFood().observe(getActivity(), foodList -> {
             adapter.setFoodList(foodList);
             currentFoodList = foodList;
@@ -61,9 +61,13 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
     public void onItemClick(int position) {
         Food currentFood = currentFoodList.get(position);
         NavController navController = Navigation.findNavController(getView());
+
+        // Navigate to the information page about the clicked food
         HomeFragmentDirections.ActionHomeFragmentToFoodInfoFragment action = HomeFragmentDirections
                 .actionHomeFragmentToFoodInfoFragment(currentFood);
         navController.navigate(action);
+
+
     }
 
 
