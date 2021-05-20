@@ -23,8 +23,7 @@ public class Meal {
     private float usedCalorie;
 
 
-    public Meal(){};
-
+    public Meal(){}
 
 
     // Setters & Getters

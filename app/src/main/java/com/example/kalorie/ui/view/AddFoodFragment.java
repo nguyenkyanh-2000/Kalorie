@@ -1,6 +1,12 @@
 package com.example.kalorie.ui.view;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,20 +15,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.text.Editable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
-
 import com.example.kalorie.R;
 import com.example.kalorie.data.model.Food;
 import com.example.kalorie.databinding.FragmentAddFoodBinding;
 import com.example.kalorie.ui.viewmodel.FoodViewModel;
+
+import org.jetbrains.annotations.NotNull;
 
 public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -33,12 +31,11 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
     public AddFoodFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAddFoodBinding.inflate(inflater, container, false);
         foodViewModel = new ViewModelProvider(getActivity()).get(FoodViewModel.class);
-        View view = binding.getRoot();
-        return view;
+        return binding.getRoot();
     }
 
     @Override
@@ -54,7 +51,6 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         });
 
         binding.fragmentAddFoodBtnSave.setOnClickListener(v -> {
-            Food currentFood = savedFood();
             foodViewModel.insert(currentFood);
             navController.navigate(R.id.action_addFoodFragment_to_homeFragment);
             Toast.makeText(getContext(), "Food added", Toast.LENGTH_LONG).show();
@@ -68,17 +64,13 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         binding.spinner2.setOnItemSelectedListener(this);
     }
 
-    public Food savedFood(){
+    public void savedFood(){
         String foodName = binding.fragmentAddFoodEditTextFoodName.getText().toString();
         String foodDescription = binding.fragmentAddFoodTextInputDescription.getText().toString();
         String foodCalorie = binding.fragmentAddFoodEditTextCalorie.getText().toString();
         int foodAmount = Integer.parseInt(binding.fragmentAddFoodEditTextAmount.getText().toString());
-        Food food = new Food();
-        food.setFoodName(foodName);
-        food.setFoodDescription(foodDescription);
-        food.setFoodAmount(foodAmount);
-        food.setFoodCalorie(foodCalorie);
-        return food;
+
+        return;
     }
 
     @Override

@@ -19,8 +19,5 @@ public interface MealDao {
     @Update
     void updateMeal(Meal meal);
 
-    @Query("SELECT * FROM meal WHERE mealDate=:mealDate LIMIT 1")
-    LiveData<Meal> getMeal(String mealDate);
-
 }
 

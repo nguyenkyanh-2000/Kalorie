@@ -1,29 +1,24 @@
 package com.example.kalorie.ui.view;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kalorie.R;
 import com.example.kalorie.data.model.Food;
 import com.example.kalorie.databinding.FragmentFoodInfoBinding;
 import com.example.kalorie.ui.viewmodel.FoodViewModel;
 
-import static android.content.ContentValues.TAG;
+import org.jetbrains.annotations.NotNull;
 
 public class FoodInfoFragment extends Fragment {
 
@@ -34,7 +29,7 @@ public class FoodInfoFragment extends Fragment {
     public FoodInfoFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentFoodInfoBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
@@ -57,13 +52,13 @@ public class FoodInfoFragment extends Fragment {
 
         binding.fragmentFoodInfoBtnBack.setOnClickListener(v -> {
             navController.navigate(R.id.action_foodInfoFragment_to_homeFragment);
-            Toast.makeText(getActivity(), "Food not saved", Toast.LENGTH_LONG);
+            Toast.makeText(getActivity(), "Food not saved", Toast.LENGTH_LONG).show();
         });
 
         binding.fragmentFoodInfoBtnRemove.setOnClickListener(v -> {
             navController.navigate(R.id.action_foodInfoFragment_to_homeFragment);
             foodViewModel.delete(currentFood);
-            Toast.makeText(getActivity(), "Food removed", Toast.LENGTH_LONG);
+            Toast.makeText(getActivity(), "Food removed", Toast.LENGTH_LONG).show();
         });
 
         binding.fragmentFoodInfoTextViewCalorie.setText(currentFood.getFoodCalorie());

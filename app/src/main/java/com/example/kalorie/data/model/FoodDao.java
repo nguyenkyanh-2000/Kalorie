@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -28,6 +27,7 @@ public interface FoodDao {
     @Query("SELECT * FROM food ORDER BY foodId")
     LiveData<List<Food>> getAllFood();
 
-    @Query("SELECT * FROM food WHERE foodID =:foodId")
-    LiveData<Food> getFood(int foodId);
+    @Query("SELECT * FROM food WHERE foodId =:Id")
+    LiveData<Food> getFoodById(int Id);
+
 }

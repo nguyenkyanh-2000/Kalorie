@@ -1,6 +1,5 @@
 package com.example.kalorie.data.model;
 
-import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -10,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Food.class, Meal.class, Nutrient.class}, version = 1, exportSchema = true)
+@Database(entities = {Food.class, Meal.class, Nutrient.class}, version = 1)
 public abstract class KalorieDatabase extends RoomDatabase{
 
     public abstract FoodDao foodDao();

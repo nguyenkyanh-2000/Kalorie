@@ -44,4 +44,8 @@ public class FoodViewModel extends AndroidViewModel {
         return allFood;
     }
 
+    public LiveData<Food> getFoodById(int id) {
+        return foodRepository.getFoodById(id);
+    }
+
 }

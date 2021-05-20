@@ -41,6 +41,10 @@ public class FoodRepository {
         return allFood;
     }
 
+    public LiveData<Food> getFoodById(int id) {
+        return foodDao.getFoodById(id);
+    }
+
     private static class InsertFoodAsyncTask extends AsyncTask<Food, Void, Void>{
         private FoodDao foodDao;
 

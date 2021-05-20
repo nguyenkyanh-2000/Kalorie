@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "food")
@@ -41,10 +40,10 @@ public class Food implements Parcelable {
         this.foodCalorie = foodCalorie;
     }
 
-    public Food(String foodName, String foodDescription, int foodCalorie){
+    public Food(String foodName, String foodDescription, String foodCalorie){
         this.foodName = foodName;
         this.foodDescription = foodDescription;
-        this.foodAmount = foodCalorie;
+        this.foodCalorie = foodCalorie;
     }
 
 

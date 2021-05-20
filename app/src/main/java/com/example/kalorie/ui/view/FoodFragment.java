@@ -1,26 +1,26 @@
 package com.example.kalorie.ui.view;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.kalorie.data.model.Food;
 import com.example.kalorie.databinding.FragmentItemListFoodBinding;
 import com.example.kalorie.ui.adapter.FoodRecyclerViewAdapter;
 import com.example.kalorie.ui.adapter.FoodRecyclerViewInterface;
 import com.example.kalorie.ui.viewmodel.FoodViewModel;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -33,12 +33,11 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
     public FoodFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentItemListFoodBinding.inflate(inflater, container, false);
         foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-        View view = binding.getRoot();
-        return view;
+        return binding.getRoot();
     }
 
     @Override
