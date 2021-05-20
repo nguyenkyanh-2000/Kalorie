@@ -40,9 +40,8 @@
             app:destination="@id/homeFragment">
         </action>
         <argument
-            android:name="food"
-            app:argType="com.example.kalorie.data.model.Food"
-            app:nullable="true" />
+            android:name="currentFoodId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/diarySettingsFragment"

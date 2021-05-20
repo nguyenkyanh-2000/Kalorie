@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,9 +23,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class FoodInfoFragment extends Fragment {
 
-    FragmentFoodInfoBinding binding;
-    Food currentFood;
-    FoodViewModel foodViewModel;
+    private int currentFoodId;
+    private static Food currentFood = new Food();
+    private FragmentFoodInfoBinding binding;
+    private FoodViewModel foodViewModel;
 
     public FoodInfoFragment() {}
 
@@ -35,11 +37,17 @@ public class FoodInfoFragment extends Fragment {
         View view = binding.getRoot();
         foodViewModel = new ViewModelProvider(getActivity()).get(FoodViewModel.class);
 
-        // Get current food from the bundle sent from food fragment
+        // Get the ID of the clicked food from the bundle sent by the food fragment
         if (getArguments() != null){
             FoodInfoFragmentArgs args = FoodInfoFragmentArgs.fromBundle(getArguments());
-            currentFood = args.getFood();
+            currentFoodId = args.getCurrentFoodId();
         }
+
+        // Get the food using Food View Model
+        foodViewModel.getFoodById(currentFoodId).observe(getActivity(), food ->{
+            currentFood = food;
+            Toast.makeText(getActivity(), currentFood.getFoodName(), Toast.LENGTH_LONG).show();
+        });
 
         return view;
     }
