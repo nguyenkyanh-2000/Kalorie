@@ -24,13 +24,13 @@ import com.example.kalorie.ui.viewmodel.FoodViewModel;
 
 import java.util.List;
 
-public class FoodListFragment extends Fragment implements FoodRecyclerViewInterface {
+public class FoodFragment extends Fragment implements FoodRecyclerViewInterface {
 
     FragmentItemListFoodBinding binding;
     FoodViewModel foodViewModel;
     public static List<Food> currentFoodList;
 
-    public FoodListFragment() {}
+    public FoodFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

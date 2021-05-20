@@ -32,11 +32,19 @@ public class Food implements Parcelable {
 
     }
 
+    // Parcelable
+
     public Food(int foodId, String foodName, String foodDescription, String foodCalorie){
         this.foodId = foodId;
         this.foodName = foodName;
         this.foodDescription = foodDescription;
         this.foodCalorie = foodCalorie;
+    }
+
+    public Food(String foodName, String foodDescription, int foodCalorie){
+        this.foodName = foodName;
+        this.foodDescription = foodDescription;
+        this.foodAmount = foodCalorie;
     }
 
 
@@ -76,6 +84,8 @@ public class Food implements Parcelable {
         dest.writeString(foodCalorie);
     }
 
+
+    // Getters & Setters
 
     public int getFoodId() {
         return foodId;

@@ -9,6 +9,7 @@ public class Meal {
 
     @PrimaryKey
     private Integer mealId;
+
     private String mealDate;
 
     private float goalCarb;

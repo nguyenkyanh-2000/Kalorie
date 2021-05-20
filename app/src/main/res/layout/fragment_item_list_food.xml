@@ -10,5 +10,5 @@
     android:layout_marginRight="0dp"
     android:background="#FFFFFF"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ui.view.FoodListFragment"
+    tools:context=".ui.view.FoodFragment"
     tools:listitem="@layout/fragment_item_food" />
