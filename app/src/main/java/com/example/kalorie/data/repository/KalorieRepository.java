@@ -11,11 +11,11 @@ import com.example.kalorie.data.model.KalorieDatabase;
 
 import java.util.List;
 
-public class FoodRepository {
+public class KalorieRepository {
     private FoodDao foodDao;
     private LiveData<List<Food>> allFood;
 
-    public FoodRepository(Application application){
+    public KalorieRepository(Application application){
         KalorieDatabase kalorieDatabase = KalorieDatabase.getINSTANCE(application);
         foodDao = kalorieDatabase.foodDao();
         allFood = foodDao.getAllFood();

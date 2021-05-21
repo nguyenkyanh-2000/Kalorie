@@ -2,9 +2,10 @@ package com.example.kalorie.data.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "food")
+@Entity
 public class Food{
 
     @PrimaryKey(autoGenerate = true)
@@ -31,12 +32,22 @@ public class Food{
     @ColumnInfo
     private int foodCarb;
 
+    @ColumnInfo
+    private int mealId;
+
     public Food(){
     }
 
 
     // Getters & Setters
 
+    public int getMealId() {
+        return mealId;
+    }
+
+    public void setMealId(int mealId) {
+        this.mealId = mealId;
+    }
 
     public int getFoodFat() {
         return foodFat;

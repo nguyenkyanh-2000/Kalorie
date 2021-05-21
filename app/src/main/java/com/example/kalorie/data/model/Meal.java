@@ -5,11 +5,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "meal")
+@Entity
 public class Meal {
 
     @PrimaryKey
-    private Integer mealId;
+    private Integer Id;
 
     @ColumnInfo
     private String mealDate;
@@ -37,12 +37,13 @@ public class Meal {
 
     // Setters & Getters
 
-    public Integer getMealId() {
-        return mealId;
+
+    public Integer getId() {
+        return Id;
     }
 
-    public void setMealId(Integer mealId) {
-        this.mealId = mealId;
+    public void setId(Integer id) {
+        Id = id;
     }
 
     public String getMealDate() {

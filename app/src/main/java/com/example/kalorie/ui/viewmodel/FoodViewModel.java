@@ -7,37 +7,37 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.kalorie.data.model.Food;
-import com.example.kalorie.data.repository.FoodRepository;
+import com.example.kalorie.data.repository.KalorieRepository;
 
 import java.util.List;
 
 
 public class FoodViewModel extends AndroidViewModel {
 
-    private FoodRepository foodRepository;
+    private KalorieRepository kalorieRepository;
     private LiveData<List<Food>> allFood;
 
 
     public FoodViewModel(@NonNull Application application) {
         super(application);
-        foodRepository = new FoodRepository(application);
-        allFood = foodRepository.getAllFood();
+        kalorieRepository = new KalorieRepository(application);
+        allFood = kalorieRepository.getAllFood();
     }
 
     public void insert(Food food){
-        foodRepository.insert(food);
+        kalorieRepository.insert(food);
     }
 
     public void update(Food food){
-        foodRepository.update(food);
+        kalorieRepository.update(food);
     }
 
     public void delete(Food food){
-        foodRepository.delete(food);
+        kalorieRepository.delete(food);
     }
 
     public void deleteAllFood(){
-        foodRepository.deleteAllFood();
+        kalorieRepository.deleteAllFood();
     }
 
     public LiveData<List<Food>> getAllFood() {
@@ -45,7 +45,7 @@ public class FoodViewModel extends AndroidViewModel {
     }
 
     public LiveData<Food> getFoodById(int id) {
-        return foodRepository.getFoodById(id);
+        return kalorieRepository.getFoodById(id);
     }
 
 }
