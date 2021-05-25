@@ -14,6 +14,8 @@ import androidx.navigation.Navigation;
 import com.example.kalorie.R;
 import com.example.kalorie.databinding.FragmentHomeBinding;
 
+import org.jetbrains.annotations.NotNull;
+
 public class HomeFragment extends Fragment{
 
     FragmentHomeBinding binding;
@@ -21,7 +23,7 @@ public class HomeFragment extends Fragment{
     public HomeFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();

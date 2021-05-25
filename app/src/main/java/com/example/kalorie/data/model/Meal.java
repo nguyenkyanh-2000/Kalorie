@@ -26,9 +26,16 @@ public class Meal {
     @ColumnInfo
     private float goalCalorie;
 
+    @ColumnInfo
     private float usedCarb;
+
+    @ColumnInfo
     private float usedFat;
+
+    @ColumnInfo
     private float usedProtein;
+
+    @ColumnInfo
     private float usedCalorie;
 
 

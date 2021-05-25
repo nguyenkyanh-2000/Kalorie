@@ -119,7 +119,9 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         }
 
         @Override
-        public void afterTextChanged(Editable s) {}
+        public void afterTextChanged(Editable s) {
+
+        }
     };
 
     // Methods for the spinner
@@ -127,11 +129,13 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String units = parent.getItemAtPosition(position).toString();
+        currentFood.setFoodUnit(units);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        String defaultUnits = parent.getItemAtPosition(0).toString();
+        currentFood.setFoodUnit(defaultUnits);
     }
 
 }

@@ -13,6 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 public abstract class KalorieDatabase extends RoomDatabase{
 
     public abstract FoodDao foodDao();
+    public abstract MealDao mealDao();
 
     private static KalorieDatabase INSTANCE;
 
@@ -31,6 +32,43 @@ public abstract class KalorieDatabase extends RoomDatabase{
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            new PopulateDBAsyncTask(INSTANCE).execute();
         }
     };
+
+    private static class PopulateDBAsyncTask extends AsyncTask<Void, Void, Void>{
+        FoodDao foodDao;
+        MealDao mealDao;
+
+        public PopulateDBAsyncTask(KalorieDatabase db) {
+            this.foodDao = db.foodDao();
+            this.mealDao = db.mealDao();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            Food sampleFood = new Food();
+            sampleFood.setFoodName("Food Sample");
+            sampleFood.setFoodDescription("This is a test Food");
+            sampleFood.setFoodCalorie(1200);
+            sampleFood.setFoodProtein(30);
+            sampleFood.setFoodCarb(40);
+            sampleFood.setFoodFat(50);
+            sampleFood.setFoodAmount(1);
+            sampleFood.setFoodUnit("G");
+            foodDao.insertFood(sampleFood);
+
+            Meal sampleMeal = new Meal();
+            sampleMeal.setMealDate("25/05/2021");
+            sampleMeal.setGoalCalorie(2000);
+            sampleMeal.setGoalCarb(100);
+            sampleMeal.setGoalProtein(100);
+            sampleMeal.setGoalFat(100);
+            mealDao.insertMeal(sampleMeal);
+
+            return null;
+        }
+    }
+
 }

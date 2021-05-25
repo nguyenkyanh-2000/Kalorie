@@ -28,23 +28,16 @@ public class FoodViewModel extends AndroidViewModel {
         kalorieRepository.insert(food);
     }
 
-    public void update(Food food){
-        kalorieRepository.update(food);
-    }
-
     public void delete(Food food){
         kalorieRepository.delete(food);
     }
 
-    public void deleteAllFood(){
-        kalorieRepository.deleteAllFood();
-    }
 
     public LiveData<List<Food>> getAllFood() {
         return allFood;
     }
 
-    public LiveData<Food> getFoodById(int id) {
+    public Food getFoodById(int id) {
         return kalorieRepository.getFoodById(id);
     }
 

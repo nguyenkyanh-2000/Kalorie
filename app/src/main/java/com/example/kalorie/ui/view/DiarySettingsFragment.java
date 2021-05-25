@@ -1,6 +1,11 @@
 package com.example.kalorie.ui.view;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,29 +13,26 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
 import com.example.kalorie.R;
-import com.example.kalorie.databinding.FragmentAddFoodBinding;
+import com.example.kalorie.data.model.Meal;
 import com.example.kalorie.databinding.FragmentDiarySettingsBinding;
 
-public class DiarySettingsFragment extends Fragment {
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Calendar;
+
+public class DiarySettingsFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     FragmentDiarySettingsBinding binding;
+    Meal currentMeal = new Meal();
 
     public DiarySettingsFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDiarySettingsBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-        return view;
+        return binding.getRoot();
     }
 
     @Override
@@ -48,9 +50,22 @@ public class DiarySettingsFragment extends Fragment {
         // TODO: Linked the progress bar with the calculations in database.
         binding.progressBarCalories.setProgress(50);
         binding.textViewProgressCalories.setText("50%");
+        binding.fragmentDiarySettingsBtnChangeDate.setOnClickListener(v -> showDatePickerDialog());
+    }
 
+    private void showDatePickerDialog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), this,
+            Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.show();
+    }
 
-
-
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        month = month + 1;
+        String date = dayOfMonth + " " + month + " " + year;
+        binding.fragmentDiarySettingsTextViewCurrentDate.setText(date);
     }
 }

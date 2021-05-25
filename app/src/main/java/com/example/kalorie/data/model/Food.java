@@ -2,38 +2,50 @@ package com.example.kalorie.data.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+
+import com.google.gson.annotations.SerializedName;
 
 @Entity
 public class Food{
 
     @PrimaryKey(autoGenerate = true)
+    @SerializedName("food_id")
     private int foodId;
 
     @ColumnInfo
+    @SerializedName("name")
     private String foodName;
 
     @ColumnInfo
+    @SerializedName("description")
     private String foodDescription;
 
     @ColumnInfo
+    @SerializedName("amount")
     private int foodAmount;
 
     @ColumnInfo
+    @SerializedName("calories_amount")
     private int foodCalorie;
 
     @ColumnInfo
+    @SerializedName("fats_amount")
     private int foodFat;
 
     @ColumnInfo
+    @SerializedName("proteins_amount")
     private int foodProtein;
 
     @ColumnInfo
+    @SerializedName("carbs_amount")
     private int foodCarb;
 
     @ColumnInfo
     private int mealId;
+
+    @ColumnInfo
+    private String foodUnit;
 
     public Food(){
     }
@@ -111,5 +123,13 @@ public class Food{
 
     public void setFoodCalorie(int foodCalorie) {
         this.foodCalorie = foodCalorie;
+    }
+
+    public String getFoodUnit() {
+        return foodUnit;
+    }
+
+    public void setFoodUnit(String foodUnit) {
+        this.foodUnit = foodUnit;
     }
 }

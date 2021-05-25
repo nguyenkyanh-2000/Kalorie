@@ -10,6 +10,7 @@ import com.example.kalorie.data.model.FoodDao;
 import com.example.kalorie.data.model.KalorieDatabase;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class KalorieRepository {
     private FoodDao foodDao;
@@ -25,24 +26,43 @@ public class KalorieRepository {
         new InsertFoodAsyncTask(foodDao).execute(food);
     }
 
-    public void update(Food food){
-        new UpdateFoodAsyncTask(foodDao).execute(food);
-    }
-
     public void delete(Food food){
         new DeleteFoodAsyncTask(foodDao).execute(food);
     }
 
-    public void deleteAllFood(){
-        new DeleteAllFoodAsyncTask(foodDao).execute();
-    }
 
     public LiveData<List<Food>> getAllFood(){
         return allFood;
     }
 
-    public LiveData<Food> getFoodById(int id) {
-        return foodDao.getFoodById(id);
+
+    public Food getFoodById(int id) {
+        try {
+            return new GetFoodAsyncTask(foodDao).execute(id).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static class GetFoodAsyncTask extends AsyncTask<Integer, Void, Food>{
+        private FoodDao foodDao;
+
+        private GetFoodAsyncTask(FoodDao foodDao){
+            this.foodDao = foodDao;
+        }
+
+        @Override
+        protected Food doInBackground(Integer... integers) {
+            return foodDao.getFoodById(integers[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Food food) {
+            super.onPostExecute(food);
+        }
     }
 
     private static class InsertFoodAsyncTask extends AsyncTask<Food, Void, Void>{
@@ -59,21 +79,6 @@ public class KalorieRepository {
         }
     }
 
-    private static class UpdateFoodAsyncTask extends AsyncTask<Food, Void, Void>{
-        private FoodDao foodDao;
-
-        private UpdateFoodAsyncTask(FoodDao foodDao){
-            this.foodDao = foodDao;
-        }
-
-        @Override
-        protected Void doInBackground(Food... foods) {
-            foodDao.updateFood(foods[0]);
-            return null;
-        }
-    }
-
-
     private static class DeleteFoodAsyncTask extends AsyncTask<Food, Void, Void>{
         private FoodDao foodDao;
 
@@ -88,19 +93,6 @@ public class KalorieRepository {
         }
     }
 
-    private static class DeleteAllFoodAsyncTask extends AsyncTask<Void, Void, Void>{
-        private FoodDao foodDao;
-
-        private DeleteAllFoodAsyncTask(FoodDao foodDao){
-            this.foodDao = foodDao;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            foodDao.deleteAllFood();
-            return null;
-        }
-    }
 
 
 }

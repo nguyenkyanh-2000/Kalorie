@@ -41,11 +41,7 @@ public class FoodInfoFragment extends Fragment {
             FoodInfoFragmentArgs args = FoodInfoFragmentArgs.fromBundle(getArguments());
             currentFoodId = args.getCurrentFoodId();
         }
-
-        // Get the food using Food View Model
-        foodViewModel.getFoodById(currentFoodId).observe(getViewLifecycleOwner(), food ->{
-            currentFood = food;
-        });
+        currentFood = foodViewModel.getFoodById(currentFoodId);
 
         return view;
     }
@@ -64,9 +60,8 @@ public class FoodInfoFragment extends Fragment {
         binding.fragmentAddFoodTextViewFat.setText(String.valueOf(currentFood.getFoodFat()));
         binding.fragmentAddFoodTextViewAmount.setText(String.valueOf(currentFood.getFoodAmount()));
 
-        binding.fragmentFoodInfoBtnBack.setOnClickListener(v -> {
-            navController.navigate(R.id.action_foodInfoFragment_to_homeFragment);
-        });
+        binding.fragmentFoodInfoBtnBack.setOnClickListener(v -> navController
+                .navigate(R.id.action_foodInfoFragment_to_homeFragment));
 
         binding.fragmentFoodInfoBtnRemove.setOnClickListener(v -> {
             navController.navigate(R.id.action_foodInfoFragment_to_homeFragment);
