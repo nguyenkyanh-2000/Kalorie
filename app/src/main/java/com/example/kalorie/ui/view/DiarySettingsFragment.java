@@ -65,7 +65,7 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         month = month + 1;
-        String date = dayOfMonth + " " + month + " " + year;
+        String date = dayOfMonth + "/" + month + "/" + year;
         binding.fragmentDiarySettingsTextViewCurrentDate.setText(date);
     }
 }

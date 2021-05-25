@@ -42,7 +42,7 @@ public class ChangeGoalFragment extends Fragment implements DatePickerDialog.OnD
                .navigate(R.id.action_changeGoalFragment_to_diarySettingsFragment));
         binding.fragmentChangeGoalBtnSave.setOnClickListener(v -> navController
                .navigate(R.id.action_changeGoalFragment_to_diarySettingsFragment));
-        binding.fragmentChangeGoalTextFieldNewDate.setOnClickListener(v -> showDatePickerDialog());
+        binding.fragmentChangeGoalBtnChooseDate.setOnClickListener(v -> showDatePickerDialog());
 
     }
 
@@ -58,6 +58,7 @@ public class ChangeGoalFragment extends Fragment implements DatePickerDialog.OnD
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         month = month + 1;
-        String date = dayOfMonth + " " + month + " " + year;
+        String date = dayOfMonth + "/" + month + "/" + year;
+        binding.fragmentChangeGoalBtnChooseDate.setText(date);
     }
 }

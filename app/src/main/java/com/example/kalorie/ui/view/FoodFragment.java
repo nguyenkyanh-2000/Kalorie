@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,9 +67,7 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
         // Navigate to the information page about the clicked food
         HomeFragmentDirections.ActionHomeFragmentToFoodInfoFragment action = HomeFragmentDirections
                 .actionHomeFragmentToFoodInfoFragment(currentFoodId);
-        navController.navigate(action);
-
-
+        navController.navigate((NavDirections) action);
     }
 
 }
