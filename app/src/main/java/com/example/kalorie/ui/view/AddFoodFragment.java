@@ -68,7 +68,7 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
             Toast.makeText(getContext(), "Food added", Toast.LENGTH_SHORT).show();
         });
 
-        // TODO: Deal with the spinner
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.units, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -87,6 +87,7 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+            // Getting input from input fields.
             String foodNameInput = binding.fragmentAddFoodEditTextFoodName
                         .getText().toString().trim();
             String foodCalorieInput = binding.fragmentAddFoodEditTextCalorie
@@ -102,6 +103,7 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
             String foodFatInput = binding.fragmentAddFoodEditTextFat
                     .getText().toString().trim();
 
+            // If any of the inputs is empty, the Save button is hidden.
             if ((!foodAmountInput.isEmpty() && !foodCalorieInput.isEmpty()
                     && !foodNameInput.isEmpty() && !foodDescriptionInput.isEmpty()
                     && !foodCarbInput.isEmpty()) && !foodProteinInput.isEmpty()
@@ -125,7 +127,6 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
     };
 
     // Methods for the spinner
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String units = parent.getItemAtPosition(position).toString();

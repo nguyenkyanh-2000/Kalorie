@@ -72,19 +72,15 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
         binding.fragmentDiarySettingsTextViewCurrentDate.setText(date);
         currentMeal = mealViewModel.getMealByDate(date);
 
-        try {
-            binding.fragmentDiarySettingsTextViewCarbGoal.setText(String.valueOf(currentMeal.getGoalCarb()));
-            binding.fragmentDiarySettingsTextViewProteinGoal.setText(String.valueOf(currentMeal.getGoalProtein()));
-            binding.fragmentDiarySettingsTextViewFatGoal.setText(String.valueOf(currentMeal.getGoalFat()));
-            binding.progressBarCalories.setProgress(currentMeal.getProgressCalorie());
-            binding.textViewProgressCalories.setText(currentMeal.getProgressCalorie() + "%");
-        }
-        catch (Exception e){
-            binding.fragmentDiarySettingsTextViewCarbGoal.setText(R.string.default_meal_specs);
-            binding.fragmentDiarySettingsTextViewProteinGoal.setText(R.string.default_meal_specs);
-            binding.fragmentDiarySettingsTextViewFatGoal.setText(R.string.default_meal_specs);
-            binding.progressBarCalories.setProgress(0);
-            binding.textViewProgressCalories.setText("0%");
-        }
+        binding.fragmentDiarySettingsTextViewCarbGoal.setText(String.valueOf
+                (currentMeal != null ? currentMeal.getGoalCarb() : "0"));
+        binding.fragmentDiarySettingsTextViewProteinGoal.setText(String.valueOf
+                (currentMeal != null ? currentMeal.getGoalProtein(): "0"));
+        binding.fragmentDiarySettingsTextViewFatGoal.setText(String.valueOf
+                (currentMeal != null ? currentMeal.getGoalFat() : "0"));
+        binding.progressBarCalories.setProgress
+                (currentMeal != null ? currentMeal.getProgressCalorie() : 0);
+        binding.textViewProgressCalories.setText
+                (currentMeal != null ? currentMeal.getProgressCalorie().toString() + "%" : "0%");
     }
 }
