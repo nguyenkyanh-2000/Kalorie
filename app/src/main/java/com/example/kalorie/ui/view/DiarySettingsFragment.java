@@ -10,12 +10,15 @@ import android.widget.DatePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.kalorie.R;
 import com.example.kalorie.data.model.Meal;
 import com.example.kalorie.databinding.FragmentDiarySettingsBinding;
+import com.example.kalorie.ui.viewmodel.FoodViewModel;
+import com.example.kalorie.ui.viewmodel.MealViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,6 +27,7 @@ import java.util.Calendar;
 public class DiarySettingsFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     FragmentDiarySettingsBinding binding;
+    MealViewModel mealViewModel;
     Meal currentMeal = new Meal();
 
     public DiarySettingsFragment() {}
@@ -32,6 +36,7 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDiarySettingsBinding.inflate(inflater, container, false);
+        mealViewModel =  new ViewModelProvider(getActivity()).get(MealViewModel.class);
         return binding.getRoot();
     }
 
@@ -47,9 +52,6 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
         binding.fragmentDiarySettingsBtnChangeGoals.setOnClickListener(v -> navController
                 .navigate(R.id.action_diarySettingsFragment_to_changeGoalFragment));
 
-        // TODO: Linked the progress bar with the calculations in database.
-        binding.progressBarCalories.setProgress(50);
-        binding.textViewProgressCalories.setText("50%");
         binding.fragmentDiarySettingsBtnChangeDate.setOnClickListener(v -> showDatePickerDialog());
     }
 
@@ -66,6 +68,23 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         month = month + 1;
         String date = dayOfMonth + "/" + month + "/" + year;
+
         binding.fragmentDiarySettingsTextViewCurrentDate.setText(date);
+        currentMeal = mealViewModel.getMealByDate(date);
+
+        try {
+            binding.fragmentDiarySettingsTextViewCarbGoal.setText(String.valueOf(currentMeal.getGoalCarb()));
+            binding.fragmentDiarySettingsTextViewProteinGoal.setText(String.valueOf(currentMeal.getGoalProtein()));
+            binding.fragmentDiarySettingsTextViewFatGoal.setText(String.valueOf(currentMeal.getGoalFat()));
+            binding.progressBarCalories.setProgress(currentMeal.getProgressCalorie());
+            binding.textViewProgressCalories.setText(currentMeal.getProgressCalorie() + "%");
+        }
+        catch (Exception e){
+            binding.fragmentDiarySettingsTextViewCarbGoal.setText(R.string.default_meal_specs);
+            binding.fragmentDiarySettingsTextViewProteinGoal.setText(R.string.default_meal_specs);
+            binding.fragmentDiarySettingsTextViewFatGoal.setText(R.string.default_meal_specs);
+            binding.progressBarCalories.setProgress(0);
+            binding.textViewProgressCalories.setText("0%");
+        }
     }
 }

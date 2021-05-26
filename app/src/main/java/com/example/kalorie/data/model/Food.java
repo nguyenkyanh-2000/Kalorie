@@ -2,6 +2,7 @@ package com.example.kalorie.data.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
@@ -41,7 +42,7 @@ public class Food{
     @SerializedName("carbs_amount")
     private int foodCarb;
 
-    @ColumnInfo
+    @Ignore
     private int mealId;
 
     @ColumnInfo

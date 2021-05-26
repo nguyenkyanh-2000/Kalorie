@@ -37,11 +37,12 @@
         android:layout_marginStart="155dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="156dp"
+        android:progress="0"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
-        tools:progress="30"
+        tools:progress="0"
         tools:visibility="visible" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -128,7 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
-        android:text="Carb Goal"
+        android:text="Carb Goal (g)"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
@@ -148,7 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
-        android:text="Protein Goal"
+        android:text="Protein Goal (g)"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
@@ -178,7 +179,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
-        android:text="Fat Goal"
+        android:text="Fat Goal (g)"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider6" />
 
@@ -186,7 +187,7 @@
         android:id="@+id/text_view_progress_calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30%"
+        android:text="0%"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/progress_bar_calories"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -210,7 +211,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
-        android:text="TextView"
+        android:text="N / A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
@@ -220,7 +221,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
-        android:text="TextView"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
@@ -230,7 +231,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
-        android:text="TextView"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
@@ -240,7 +241,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
-        android:text="TextView"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider6" />
 

@@ -14,31 +14,23 @@ import java.util.List;
 
 public class FoodViewModel extends AndroidViewModel {
 
-    private KalorieRepository kalorieRepository;
-    private LiveData<List<Food>> allFood;
-
+    private final KalorieRepository kalorieRepository;
 
     public FoodViewModel(@NonNull Application application) {
         super(application);
         kalorieRepository = new KalorieRepository(application);
-        allFood = kalorieRepository.getAllFood();
     }
 
     public void insert(Food food){
         kalorieRepository.insert(food);
     }
-
     public void delete(Food food){
         kalorieRepository.delete(food);
     }
-
-
     public LiveData<List<Food>> getAllFood() {
-        return allFood;
+        return kalorieRepository.getAllFood();
     }
-
     public Food getFoodById(int id) {
         return kalorieRepository.getFoodById(id);
     }
-
 }

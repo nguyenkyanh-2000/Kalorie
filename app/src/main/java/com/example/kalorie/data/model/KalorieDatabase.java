@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Food.class, Meal.class}, version = 1)
+@Database(entities = {Food.class, Meal.class}, version = 2)
 public abstract class KalorieDatabase extends RoomDatabase{
 
     public abstract FoodDao foodDao();
@@ -60,12 +60,28 @@ public abstract class KalorieDatabase extends RoomDatabase{
             foodDao.insertFood(sampleFood);
 
             Meal sampleMeal = new Meal();
-            sampleMeal.setMealDate("25/05/2021");
+            sampleMeal.setMealDate("25/5/2021");
             sampleMeal.setGoalCalorie(2000);
             sampleMeal.setGoalCarb(100);
             sampleMeal.setGoalProtein(100);
             sampleMeal.setGoalFat(100);
+            sampleMeal.setUsedCalorie(1800);
+            sampleMeal.setUsedCarb(60);
+            sampleMeal.setUsedProtein(30);
+            sampleMeal.setUsedFat(15);
             mealDao.insertMeal(sampleMeal);
+
+            Meal sampleMeal1 = new Meal();
+            sampleMeal1.setMealDate("26/5/2021");
+            sampleMeal1.setGoalCalorie(2000);
+            sampleMeal1.setGoalCarb(80);
+            sampleMeal1.setGoalProtein(80);
+            sampleMeal1.setGoalFat(80);
+            sampleMeal1.setUsedCalorie(1800);
+            sampleMeal1.setUsedCarb(60);
+            sampleMeal1.setUsedProtein(30);
+            sampleMeal1.setUsedFat(15);
+            mealDao.insertMeal(sampleMeal1);
 
             return null;
         }

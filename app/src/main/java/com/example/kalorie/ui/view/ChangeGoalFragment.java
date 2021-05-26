@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.example.kalorie.R;
 import com.example.kalorie.databinding.FragmentChangeGoalBinding;
+import com.example.kalorie.ui.viewmodel.MealViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -23,6 +24,7 @@ import java.util.Calendar;
 public class ChangeGoalFragment extends Fragment implements DatePickerDialog.OnDateSetListener{
 
     FragmentChangeGoalBinding binding;
+    MealViewModel mealViewModel;
 
     public ChangeGoalFragment() {}
 

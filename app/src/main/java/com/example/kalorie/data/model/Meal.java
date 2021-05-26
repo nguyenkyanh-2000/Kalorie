@@ -41,6 +41,32 @@ public class Meal {
 
     public Meal(){}
 
+    public Integer getProgressCalorie()
+    {
+        float progress = 100 * usedCalorie / goalCalorie;
+        return (int) progress;
+    }
+
+
+    public Integer getProgressProtein()
+    {
+        float progress = 100 * usedProtein / goalProtein;
+        return (int) progress;
+    }
+
+
+    public Integer getProgressCarb()
+    {
+        float progress = 100 * usedCarb / goalCarb;
+        return (int) progress;
+    }
+
+
+    public Integer getProgressFat()
+    {
+        float progress = 100 * usedFat / goalFat;
+        return (int) progress;
+    }
 
     // Setters & Getters
 
