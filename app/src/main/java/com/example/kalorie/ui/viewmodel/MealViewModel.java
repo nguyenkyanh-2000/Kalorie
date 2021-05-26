@@ -13,6 +13,7 @@ import com.example.kalorie.data.repository.KalorieRepository;
 public class MealViewModel extends AndroidViewModel {
 
     private final KalorieRepository kalorieRepository;
+    public MutableLiveData<String> currentDate = new MutableLiveData<>();
 
     public MealViewModel(@NonNull Application application) {
         super(application);
@@ -23,8 +24,14 @@ public class MealViewModel extends AndroidViewModel {
         kalorieRepository.insert(meal);
     }
 
+    public LiveData<String> getCurrentDate(){
+        return currentDate;
+    }
+
     public Meal getMealByDate(String date){
         Meal currentMeal = kalorieRepository.getMealByDate(date);
+        currentDate.setValue(date);
+
         if (currentMeal == null){
             currentMeal = new Meal();
             currentMeal.setMealDate(date);

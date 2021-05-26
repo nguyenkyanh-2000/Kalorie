@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_diarySettingsFragment_to_changeGoalFragment"
             app:destination="@id/changeGoalFragment" />
+        <argument
+            android:name="currentDate"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/changeGoalFragment"

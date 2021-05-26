@@ -25,6 +25,7 @@ public class FoodViewModel extends AndroidViewModel {
     }
 
 
+
     public void insert(Food food){
         kalorieRepository.insert(food);
     }
