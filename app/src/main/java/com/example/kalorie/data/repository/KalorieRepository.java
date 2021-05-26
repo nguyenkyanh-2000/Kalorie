@@ -50,11 +50,7 @@ public class KalorieRepository {
     public Meal getMealByDate(String date){
         try {
             return new GetMealByDateAsyncTask(mealDao).execute(date).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        } catch (ExecutionException | InterruptedException e) {}
         return null;
     }
 

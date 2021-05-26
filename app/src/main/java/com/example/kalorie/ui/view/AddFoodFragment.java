@@ -40,23 +40,20 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         return binding.getRoot();
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         final NavController navController = Navigation.findNavController(view);
         super.onViewCreated(view, savedInstanceState);
 
-        // Save button is only enabled after all fields are filled.
-
+        // Add a watcher to all input text fields.
         binding.fragmentAddFoodBtnSave.setEnabled(false);
-        binding.fragmentAddFoodEditTextFoodName.addTextChangedListener(addFoodWatcher);
-        binding.fragmentAddFoodEditTextAmount.addTextChangedListener(addFoodWatcher);
-        binding.fragmentAddFoodEditTextCalorie.addTextChangedListener(addFoodWatcher);
-        binding.fragmentAddFoodTextInputDescription.addTextChangedListener(addFoodWatcher);
+        binding.fragmentAddFoodEditTextFoodName.addTextChangedListener(textWatcher);
+        binding.fragmentAddFoodEditTextAmount.addTextChangedListener(textWatcher);
+        binding.fragmentAddFoodEditTextCalorie.addTextChangedListener(textWatcher);
+        binding.fragmentAddFoodTextInputDescription.addTextChangedListener(textWatcher);
 
         // Bindings for the SAVE and BACK button
-
         binding.fragmentAddFoodBtnBack.setOnClickListener(v -> {
             navController.navigate(R.id.action_addFoodFragment_to_homeFragment);
             Toast.makeText(getContext(), "No food added.", Toast.LENGTH_SHORT).show();
@@ -68,7 +65,7 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
             Toast.makeText(getContext(), "Food added", Toast.LENGTH_SHORT).show();
         });
 
-
+        // Bindings for the spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.units, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -76,11 +73,8 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         binding.spinner2.setOnItemSelectedListener(this);
     }
 
-
-
-    // Text watcher for input fields
-
-    private TextWatcher addFoodWatcher = new TextWatcher() {
+    // Text watcher
+    private TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -103,7 +97,7 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
             String foodFatInput = binding.fragmentAddFoodEditTextFat
                     .getText().toString().trim();
 
-            // If any of the inputs is empty, the Save button is hidden.
+            // If any of the inputs is empty, the SAVE button is hidden.
             if ((!foodAmountInput.isEmpty() && !foodCalorieInput.isEmpty()
                     && !foodNameInput.isEmpty() && !foodDescriptionInput.isEmpty()
                     && !foodCarbInput.isEmpty()) && !foodProteinInput.isEmpty()
@@ -121,12 +115,10 @@ public class AddFoodFragment extends Fragment implements AdapterView.OnItemSelec
         }
 
         @Override
-        public void afterTextChanged(Editable s) {
-
-        }
+        public void afterTextChanged(Editable s) {}
     };
 
-    // Methods for the spinner
+    // Spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String units = parent.getItemAtPosition(position).toString();

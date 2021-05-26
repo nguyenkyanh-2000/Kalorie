@@ -10,6 +10,7 @@ import android.widget.DatePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -28,7 +29,7 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
 
     FragmentDiarySettingsBinding binding;
     MealViewModel mealViewModel;
-    Meal currentMeal = new Meal();
+    Meal currentMeal;
 
     public DiarySettingsFragment() {}
 
@@ -72,15 +73,10 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
         binding.fragmentDiarySettingsTextViewCurrentDate.setText(date);
         currentMeal = mealViewModel.getMealByDate(date);
 
-        binding.fragmentDiarySettingsTextViewCarbGoal.setText(String.valueOf
-                (currentMeal != null ? currentMeal.getGoalCarb() : "0"));
-        binding.fragmentDiarySettingsTextViewProteinGoal.setText(String.valueOf
-                (currentMeal != null ? currentMeal.getGoalProtein(): "0"));
-        binding.fragmentDiarySettingsTextViewFatGoal.setText(String.valueOf
-                (currentMeal != null ? currentMeal.getGoalFat() : "0"));
-        binding.progressBarCalories.setProgress
-                (currentMeal != null ? currentMeal.getProgressCalorie() : 0);
-        binding.textViewProgressCalories.setText
-                (currentMeal != null ? currentMeal.getProgressCalorie().toString() + "%" : "0%");
+        binding.fragmentDiarySettingsTextViewCarbGoal.setText(String.valueOf(currentMeal.getGoalCarb()));
+        binding.fragmentDiarySettingsTextViewProteinGoal.setText(String.valueOf(currentMeal.getGoalProtein()));
+        binding.fragmentDiarySettingsTextViewFatGoal.setText(String.valueOf(currentMeal.getGoalFat()));
+        binding.progressBarCalories.setProgress(currentMeal.getProgressCalorie());
+        binding.textViewProgressCalories.setText(currentMeal.getProgressCalorie().toString() + "%");
     }
 }

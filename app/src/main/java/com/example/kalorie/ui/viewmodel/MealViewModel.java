@@ -4,6 +4,8 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.kalorie.data.model.Meal;
 import com.example.kalorie.data.repository.KalorieRepository;
@@ -17,6 +19,25 @@ public class MealViewModel extends AndroidViewModel {
         kalorieRepository = new KalorieRepository(application);
     }
 
-    public void insertMeal(Meal meal){kalorieRepository.insert(meal);}
-    public Meal getMealByDate(String date){return kalorieRepository.getMealByDate(date);}
+    public void insertMeal(Meal meal){
+        kalorieRepository.insert(meal);
+    }
+
+    public Meal getMealByDate(String date){
+        Meal currentMeal = kalorieRepository.getMealByDate(date);
+        if (currentMeal == null){
+            currentMeal = new Meal();
+            currentMeal.setMealDate(date);
+            currentMeal.setGoalCalorie(0);
+            currentMeal.setGoalCarb(0);
+            currentMeal.setGoalProtein(0);
+            currentMeal.setGoalFat(0);
+            currentMeal.setUsedCalorie(0);
+            currentMeal.setUsedCarb(0);
+            currentMeal.setUsedProtein(0);
+            currentMeal.setUsedFat(0);
+            insertMeal(currentMeal);
+        }
+        return currentMeal;
+    }
 }

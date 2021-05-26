@@ -8,17 +8,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.kalorie.R;
 import com.example.kalorie.databinding.FragmentNutrientCompositionBinding;
+import com.example.kalorie.ui.viewmodel.FoodViewModel;
+import com.example.kalorie.ui.viewmodel.MealViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
 public class NutrientCompositionFragment extends Fragment {
 
     FragmentNutrientCompositionBinding binding;
+    MealViewModel mealViewModel;
 
     public NutrientCompositionFragment() {}
 
@@ -27,6 +31,7 @@ public class NutrientCompositionFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentNutrientCompositionBinding.inflate(inflater, container, false);
+        mealViewModel = new ViewModelProvider(getActivity()).get(MealViewModel.class);
         return binding.getRoot();
     }
 

@@ -40,8 +40,11 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_change_goal_TextField_new_carb">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EditTextNewProteinGoal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,8 +60,11 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_change_goal_TextField_new_protein">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EditTextNewFatGoal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,8 +81,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EditTextNewCalorieGoal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,8 +101,11 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_change_goal_TextField_new_calorie">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EditTextNewCarbGoal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

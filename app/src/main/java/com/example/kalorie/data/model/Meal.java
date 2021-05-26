@@ -1,6 +1,7 @@
 package com.example.kalorie.data.model;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -8,10 +9,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Meal {
 
-    @PrimaryKey
-    private Integer Id;
-
-    @ColumnInfo
+    @PrimaryKey @NonNull
     private String mealDate;
 
     @ColumnInfo
@@ -69,15 +67,6 @@ public class Meal {
     }
 
     // Setters & Getters
-
-
-    public Integer getId() {
-        return Id;
-    }
-
-    public void setId(Integer id) {
-        Id = id;
-    }
 
     public String getMealDate() {
         return mealDate;

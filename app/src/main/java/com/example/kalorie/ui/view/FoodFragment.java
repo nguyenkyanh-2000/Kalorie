@@ -67,7 +67,7 @@ public class FoodFragment extends Fragment implements FoodRecyclerViewInterface 
         // Navigate to the information page about the clicked food
         HomeFragmentDirections.ActionHomeFragmentToFoodInfoFragment action = HomeFragmentDirections
                 .actionHomeFragmentToFoodInfoFragment(currentFoodId);
-        navController.navigate((NavDirections) action);
+        navController.navigate(action);
     }
 
 }
