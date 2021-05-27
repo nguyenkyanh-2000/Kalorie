@@ -42,8 +42,7 @@ public class Food{
     @SerializedName("carbs_amount")
     private int foodCarb;
 
-    @Ignore
-    private int mealId;
+    private String foodDate;
 
     @ColumnInfo
     private String foodUnit;
@@ -54,12 +53,12 @@ public class Food{
 
     // Getters & Setters
 
-    public int getMealId() {
-        return mealId;
+    public String getFoodDate() {
+        return foodDate;
     }
 
-    public void setMealId(int mealId) {
-        this.mealId = mealId;
+    public void setFoodDate(String foodDate) {
+        this.foodDate = foodDate;
     }
 
     public int getFoodFat() {

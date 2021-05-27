@@ -7,8 +7,8 @@ import java.util.List;
 
 public class MealWithFoods {
     @Embedded public Meal meal;
-    @Relation(parentColumn = "Id"
-            , entityColumn = "mealId"
-    )
-    public List<Food> foodList;
+    @Relation(parentColumn = "mealDate"
+            , entityColumn = "foodDate",
+            entity = Food.class
+    ) List<Food> foodList;
 }

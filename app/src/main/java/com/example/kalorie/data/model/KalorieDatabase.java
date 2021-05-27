@@ -57,7 +57,45 @@ public abstract class KalorieDatabase extends RoomDatabase{
             sampleFood.setFoodFat(50);
             sampleFood.setFoodAmount(1);
             sampleFood.setFoodUnit("G");
+            sampleFood.setFoodDate("25/5/2021");
             foodDao.insertFood(sampleFood);
+
+            Food sampleFood1 = new Food();
+            sampleFood1.setFoodName("Food Sample 1");
+            sampleFood1.setFoodDescription("This is a test Food");
+            sampleFood1.setFoodCalorie(200);
+            sampleFood1.setFoodProtein(10);
+            sampleFood1.setFoodCarb(20);
+            sampleFood1.setFoodFat(30);
+            sampleFood1.setFoodAmount(2);
+            sampleFood1.setFoodUnit("G");
+            sampleFood1.setFoodDate("25/5/2021");
+            foodDao.insertFood(sampleFood1);
+
+            Food sampleFood2 = new Food();
+            sampleFood2.setFoodName("Food Sample 2");
+            sampleFood2.setFoodDescription("This is a test Food");
+            sampleFood2.setFoodCalorie(200);
+            sampleFood2.setFoodProtein(10);
+            sampleFood2.setFoodCarb(20);
+            sampleFood2.setFoodFat(30);
+            sampleFood2.setFoodAmount(2);
+            sampleFood2.setFoodUnit("MG");
+            sampleFood2.setFoodDate("26/5/2021");
+            foodDao.insertFood(sampleFood2);
+
+            Food sampleFood3 = new Food();
+            sampleFood3.setFoodName("Food Sample 3");
+            sampleFood3.setFoodDescription("This is a test Food");
+            sampleFood3.setFoodCalorie(200);
+            sampleFood3.setFoodProtein(10);
+            sampleFood3.setFoodCarb(20);
+            sampleFood3.setFoodFat(30);
+            sampleFood3.setFoodAmount(2);
+            sampleFood3.setFoodUnit("MG");
+            sampleFood3.setFoodDate("27/5/2021");
+            foodDao.insertFood(sampleFood3);
+
 
             Meal sampleMeal = new Meal();
             sampleMeal.setMealDate("25/5/2021");

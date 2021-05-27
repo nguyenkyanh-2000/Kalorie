@@ -31,7 +31,7 @@ public class ChangeGoalFragment extends Fragment implements DatePickerDialog.OnD
     FragmentChangeGoalBinding binding;
     MealViewModel mealViewModel;
     Meal currentMeal = new Meal();
-    String currentDate = "";
+    String currentDate;
 
     public ChangeGoalFragment() {}
 
@@ -39,6 +39,7 @@ public class ChangeGoalFragment extends Fragment implements DatePickerDialog.OnD
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentChangeGoalBinding.inflate(inflater, container, false);
+        currentDate ="";
         mealViewModel = new ViewModelProvider(getActivity()).get(MealViewModel.class);
         return binding.getRoot();
     }
@@ -91,7 +92,7 @@ public class ChangeGoalFragment extends Fragment implements DatePickerDialog.OnD
                     .getText().toString().trim();
 
             // If any input field is empty, the SAVE button is hidden.
-            if (!currentDate.isEmpty() && !mealCalorieInput.isEmpty() && !mealCarbInput.isEmpty()
+            if (currentDate != "" && !mealCalorieInput.isEmpty() && !mealCarbInput.isEmpty()
                 && !mealProteinInput.isEmpty() && !mealFatInput.isEmpty()){
 
                 binding.fragmentChangeGoalBtnSave.setEnabled(true);
