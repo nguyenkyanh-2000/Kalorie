@@ -30,6 +30,7 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
     FragmentDiarySettingsBinding binding;
     MealViewModel mealViewModel;
     Meal currentMeal;
+    String currentDate;
 
     public DiarySettingsFragment() {}
 
@@ -44,11 +45,13 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        final NavController navController = Navigation.findNavController(view);
         super.onViewCreated(view, savedInstanceState);
+        final NavController navController = Navigation.findNavController(view);
 
-        binding.fragmentDiarySettingsBtnBack.setOnClickListener(v -> navController
-                .navigate(R.id.action_diarySettingsFragment_to_homeFragment));
+        binding.fragmentDiarySettingsBtnBack.setOnClickListener(v -> {
+            navController.navigate(R.id.action_diarySettingsFragment_to_homeFragment);
+            navController.getPreviousBackStackEntry().getSavedStateHandle().set("date", currentDate);
+        });
 
         binding.fragmentDiarySettingsBtnChangeGoals.setOnClickListener(v -> navController
                 .navigate(R.id.action_diarySettingsFragment_to_changeGoalFragment));
@@ -68,10 +71,10 @@ public class DiarySettingsFragment extends Fragment implements DatePickerDialog.
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         month = month + 1;
-        String date = dayOfMonth + "/" + month + "/" + year;
+        currentDate = dayOfMonth + "/" + month + "/" + year;
 
-        binding.fragmentDiarySettingsTextViewCurrentDate.setText(date);
-        currentMeal = mealViewModel.getMealByDate(date);
+        binding.fragmentDiarySettingsTextViewCurrentDate.setText(currentDate);
+        currentMeal = mealViewModel.getMealByDate(currentDate);
 
         binding.fragmentDiarySettingsTextViewCarbGoal.setText(String.valueOf(currentMeal.getGoalCarb()));
         binding.fragmentDiarySettingsTextViewProteinGoal.setText(String.valueOf(currentMeal.getGoalProtein()));

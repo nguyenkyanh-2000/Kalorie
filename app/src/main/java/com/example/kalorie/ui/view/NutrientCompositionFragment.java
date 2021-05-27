@@ -1,13 +1,17 @@
 package com.example.kalorie.ui.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -40,6 +44,18 @@ public class NutrientCompositionFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
+
+        Log.v("Date changed", "Nothing");
+        MutableLiveData<String> liveData = navController.getCurrentBackStackEntry()
+                .getSavedStateHandle()
+                .getLiveData("date");
+        liveData.observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(getActivity(),s, Toast.LENGTH_LONG).show();
+                Log.v("Date changed", s);
+            }
+        });
 
         view.setOnClickListener(v -> navController
                 .navigate(R.id.action_homeFragment_to_diarySettingsFragment));

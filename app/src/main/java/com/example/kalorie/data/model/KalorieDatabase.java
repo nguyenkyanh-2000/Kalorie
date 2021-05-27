@@ -73,7 +73,7 @@ public abstract class KalorieDatabase extends RoomDatabase{
 
             Meal sampleMeal1 = new Meal();
             sampleMeal1.setMealDate("26/5/2021");
-            sampleMeal1.setGoalCalorie(2000);
+            sampleMeal1.setGoalCalorie(2500);
             sampleMeal1.setGoalCarb(80);
             sampleMeal1.setGoalProtein(80);
             sampleMeal1.setGoalFat(80);
